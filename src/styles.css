@@ -1,0 +1,29 @@
+#wiki * {
+  all: revert;
+  font-family ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+#wiki a {
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+/* Estilos para navegadores basados en WebKit */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la scrollbar vertical */
+  height: 12px; /* Alto de la scrollbar horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo de la pista de la scrollbar */
+  border-radius: 10px; /* Bordes redondeados de la pista */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(99, 99, 99); /* Color del pulgar de la scrollbar */
+  border-radius: 10px; /* Bordes redondeados del pulgar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; /* Color del pulgar al pasar el cursor */
+}
