@@ -1,22 +1,29 @@
-import React from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { Params, ScreenPath } from "../../common/utils/utils";
 
 const CongratsScreen: React.FC = () => {
   const navigate = useNavigate();
-  const path = localStorage.getItem("gamePath") || "";
-  const clickCount = localStorage.getItem("clickCount") || "0";
+  const path = localStorage.getItem(Params.gamePath) ?? "";
+  const clickCount = localStorage.getItem(Params.clickCount) ?? "0";
 
   const articles = path.split(",");
 
   const handleClick = () => {
-    // Acción para volver al inicio o reiniciar el juego
-    localStorage.removeItem("gamePath");
-    localStorage.removeItem("clickCount");
-    navigate("/");
+    localStorage.removeItem(Params.gamePath);
+    localStorage.removeItem(Params.clickCount);
+    navigate(ScreenPath.home);
   };
 
+    useEffect(() => {
+      if (!path)
+        navigate(ScreenPath.home);
+    }, []);
+
+
   return (
-    <div className="bg-gray-800 text-white min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-bold mb-6">¡Felicitaciones!</h1>
       <p className="text-2xl mb-4">
         Lo conseguiste en <span className="font-bold">{clickCount}</span> clics

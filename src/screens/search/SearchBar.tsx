@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import wiki from "wikipedia";
 import SuggestionsList from "./SuggestionsList";
-import { search } from "wikipedia";
 
 type SetSuggestions = React.Dispatch<React.SetStateAction<string[]>>;
 
@@ -19,8 +19,12 @@ const SearchBar = (props: SearchBarProps) => {
     setSuggestions: SetSuggestions
   ) => {
     if (query.length < 3) return;
-    const results = await search(query);
-    setSuggestions(results.results.map((result: any) => result.title));
+    try {
+      const results = await wiki.search(query);
+      setSuggestions(results.results.map((result: any) => result.title));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChange = (e: any) => {
