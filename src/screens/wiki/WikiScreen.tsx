@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { mobileHtml } from "wikipedia";
+import { getWikipediaMobileHtml } from "../../wikipedia/Wikipedia";
 import LoadingSpin from "../../common/components/LoadingSpin";
 import { Params, ScreenPath } from "../../common/utils/utils";
 import WikiFrame from "./WikiFrame";
@@ -22,7 +22,7 @@ const WikiScreen: React.FC = () => {
       try {
         setIsLoading(true);
         if(!article) throw new Error("Please provide a title");
-        const pageContent = (await mobileHtml(article)) as string;
+        const pageContent = await getWikipediaMobileHtml(article);
         setHtmlContent(pageContent.replace("<base ", "<pepe"));
       } catch (error) {
         console.error(error);

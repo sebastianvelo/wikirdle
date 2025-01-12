@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import wiki from "wikipedia";
+import { searchWikipediaArticles } from "../../wikipedia/Wikipedia";
 import SuggestionsList from "./SuggestionsList";
 
 type SetSuggestions = React.Dispatch<React.SetStateAction<string[]>>;
@@ -14,14 +14,11 @@ const SearchBar = (props: SearchBarProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
 
-  const handleSearch = async (
-    query: string,
-    setSuggestions: SetSuggestions
-  ) => {
+  const handleSearch = async (query: string) => {
     if (query.length < 3) return;
     try {
-      const results = await wiki.search(query);
-      setSuggestions(results.results.map((result: any) => result.title));
+      const results = await searchWikipediaArticles(query);
+      setSuggestions(results);
     } catch (error) {
       console.error(error);
     }
@@ -29,7 +26,7 @@ const SearchBar = (props: SearchBarProps) => {
 
   const handleChange = (e: any) => {
     props.setter(e.target.value);
-    handleSearch(e.target.value, setSuggestions);
+    handleSearch(e.target.value);
   };
 
   const handleSuggestionClick = (title: string) => {
@@ -43,7 +40,7 @@ const SearchBar = (props: SearchBarProps) => {
 
   return (
     <div className="p-4">
-      <label className="block text-blue-300 font-bold mb-2">
+      <label className="block text-blue-200 font-bold mb-2">
         {props.title}
       </label>
       <input

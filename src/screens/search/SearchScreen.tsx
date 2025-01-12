@@ -16,11 +16,7 @@ const SearchScreen: React.FC = () => {
           </h1>
           <div className="flex flex-col align-center justify-center w-full">
             <SearchBar title="Origen" value={origin} setter={setOrigin} />
-            <SearchBar
-              title="Destino"
-              value={destination}
-              setter={setDestination}
-            />
+            <SearchBar title="Destino" value={destination} setter={setDestination} />
             <StartGameButton origin={origin} destination={destination} />
           </div>
 
