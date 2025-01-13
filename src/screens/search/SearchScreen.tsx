@@ -23,17 +23,15 @@ const SearchScreen: React.FC = () => {
           </div>
         </GlassmorphismCard>
         <GlassmorphismCard>
-          <div className="flex flex-col align-center justify-center w-96 p-8">
-            <div className="flex flex-col align-center justify-center w-full">
-              <h1 className="text-2xl font-bold text-center text-blue-900 mb-8">
-                Seleccioná los artículos
-              </h1>
-              <SearchBar title="Origen" value={origin} setter={setOrigin} />
-              <SearchBar title="Destino" value={destination} setter={setDestination} />
-              <StartGameButton origin={origin} destination={destination} />
-            </div>
-
+          <div className="p-8 space-y-8 w-full">
+            <h1 className="text-2xl font-bold text-center text-blue-900">
+              Seleccioná los artículos
+            </h1>
+            <SearchBar title="Origen" value={origin} setter={setOrigin} />
+            <SearchBar title="Destino" value={destination} setter={setDestination} />
+            <StartGameButton origin={origin} destination={destination} />
           </div>
+
         </GlassmorphismCard>
       </div>
     </div>
