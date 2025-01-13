@@ -11,10 +11,10 @@ const SearchScreen: React.FC = () => {
   return (
     <div className="w-screen h-screen flex flex-col">
       <Header />
-      <div className="py-8 px-4 flex flex-col lg:flex-row h-full w-full justify-between sm:justify-evenly items-center bg-gray-900">
+      <div className="flex flex-col lg:flex-row h-full w-full justify-between sm:justify-around items-center bg-gray-200 sm:pt-4">
 
         <GlassmorphismCard>
-          <div className="p-8 space-y-8 w-full">
+          <div className="p-6 space-y-4 w-screen sm:w-96">
             <h1 className="text-2xl font-bold text-center text-blue-900">
               Seleccioná los artículos
             </h1>
@@ -24,9 +24,10 @@ const SearchScreen: React.FC = () => {
           </div>
 
         </GlassmorphismCard>
+        
         <GlassmorphismCard>
-          <div className="p-8 space-y-4">
-            <h1 className="text-2xl font-bold text-center text-blue-900 mb-8">
+          <div className="px-6 py-4 space-y-4">
+            <h1 className="text-2xl font-bold text-center text-blue-900">
               ¿Cómo se juega?
             </h1>
             <p>🔵 El objetivo del juego es llegar al artículo de Wikipedia destino desde el artículo origen.</p>

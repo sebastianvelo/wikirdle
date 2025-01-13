@@ -23,6 +23,7 @@ const WikiScreen: React.FC = () => {
         setIsLoading(true);
         if(!article) throw new Error("Please provide a title");
         const pageContent = await getWikipediaMobileHtml(article);
+        if(!pageContent) throw new Error("Article not found")
         setHtmlContent(pageContent.replace("<base ", "<pepe"));
       } catch (error) {
         console.error(error);
