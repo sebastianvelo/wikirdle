@@ -8,7 +8,7 @@ const DEFAULT_HEADERS = {
 
 const Endpoint = {
     search: 'https://es.wikipedia.org/w/api.php',
-    mobileHTML: (encodedTitle: string) => `https://es.m.wikipedia.org/api/rest_v1/page/mobile-html/${encodedTitle}`;
+    mobileHTML: (encodedTitle: string) => `https://es.m.wikipedia.org/api/rest_v1/page/mobile-html/${encodedTitle}`
 };
 
 
