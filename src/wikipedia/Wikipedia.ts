@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const searchWikipediaArticles = async (query: string): Promise<string[]> => {
-    const endpoint = 'https://en.wikipedia.org/w/api.php';
+    const endpoint = 'https://es.wikipedia.org/w/api.php';
     const params = {
         action: 'query',
         list: 'search',
@@ -31,7 +31,7 @@ export const getWikipediaMobileHtml = async (articleTitle: string): Promise<stri
     // Codificar el título del artículo para URL
     const encodedTitle = encodeURIComponent(articleTitle);
 
-    const url = `https://en.m.wikipedia.org/api/rest_v1/page/mobile-html/${encodedTitle}`;
+    const url = `https://es.m.wikipedia.org/api/rest_v1/page/mobile-html/${encodedTitle}`;
 
     try {
         const response = await axios.get(url, {

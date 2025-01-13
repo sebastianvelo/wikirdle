@@ -40,7 +40,7 @@ const SearchBar = (props: SearchBarProps) => {
 
   return (
     <div className="p-4">
-      <label className="block text-blue-200 font-bold mb-2">
+      <label className="block text-blue-900 font-bold mb-2">
         {props.title}
       </label>
       <input

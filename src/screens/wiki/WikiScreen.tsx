@@ -5,7 +5,7 @@ import LoadingSpin from "../../common/components/LoadingSpin";
 import { Params, ScreenPath } from "../../common/utils/utils";
 import WikiFrame from "./WikiFrame";
 import WikiScreenFooter from "./WikiScreenFooter";
-import WikiScreenHeader from "./WikiScreenHeader";
+import Header from "../../common/components/Header";
 
 const WikiScreen: React.FC = () => {
   const location = useLocation();
@@ -63,10 +63,10 @@ const WikiScreen: React.FC = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <WikiScreenHeader destination={destination} />
+      <Header />
       <LoadingSpin isLoading={isLoading} />
       <WikiFrame htmlContent={htmlContent} handler={handleLinkClick} isLoading={isLoading} />
-      <WikiScreenFooter clickCount={clickCount} />
+      <WikiScreenFooter clickCount={clickCount} destination={destination} />
     </div>
   );
 };

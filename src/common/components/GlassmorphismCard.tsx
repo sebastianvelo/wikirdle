@@ -6,7 +6,7 @@ interface GlassmorphismCardProps {
 
 const GlassmorphismCard: React.FC<GlassmorphismCardProps> = ({ children }) => {
   return (
-    <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg border border-white border-opacity-20 shadow-lg p-6 md:w-2/3 lg:w-1/3">
+    <div className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-lg border border-white border-opacity-20 shadow-lg">
       {children}
     </div>
   );

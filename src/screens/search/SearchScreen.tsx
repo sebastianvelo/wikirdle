@@ -2,26 +2,40 @@ import React, { useState } from "react";
 import GlassmorphismCard from "../../common/components/GlassmorphismCard";
 import SearchBar from "./SearchBar";
 import StartGameButton from "./StartGameButton";
+import Header from "../../common/components/Header";
 
 const SearchScreen: React.FC = () => {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
 
   return (
-    <div className="flex items-center align-center justify-center bg-gray-900 h-screen w-screen p-12">
-      <GlassmorphismCard>
-        <div className="flex flex-col align-center justify-center">
-          <h1 className="text-5xl font-bold text-center text-blue-300 mb-8">
-            Wikirdle
-          </h1>
-          <div className="flex flex-col align-center justify-center w-full">
-            <SearchBar title="Origen" value={origin} setter={setOrigin} />
-            <SearchBar title="Destino" value={destination} setter={setDestination} />
-            <StartGameButton origin={origin} destination={destination} />
+    <div className="w-screen h-screen flex flex-col">
+      <Header />
+      <div className="py-8 px-4 flex flex-col h-full justify-between sm:justify-evenly items-center bg-gray-900">
+        <GlassmorphismCard>
+          <div className="p-8 space-y-4">
+            <h1 className="text-2xl font-bold text-center text-blue-900 mb-8">
+              ¿Cómo se juega?
+            </h1>
+            <p>🔵 El objetivo del juego es llegar al artículo de Wikipedia destino desde el artículo origen.</p>
+            <p>🔵 Debes hacerlo navegando por los <span className="text-blue-600 font-bold underline">links</span> que aparecen</p>
+            <p>🔵 ¡Intentá llegar en la menor cantidad de clics posible!</p>
           </div>
+        </GlassmorphismCard>
+        <GlassmorphismCard>
+          <div className="flex flex-col align-center justify-center w-96 p-8">
+            <div className="flex flex-col align-center justify-center w-full">
+              <h1 className="text-2xl font-bold text-center text-blue-900 mb-8">
+                Seleccioná los artículos
+              </h1>
+              <SearchBar title="Origen" value={origin} setter={setOrigin} />
+              <SearchBar title="Destino" value={destination} setter={setDestination} />
+              <StartGameButton origin={origin} destination={destination} />
+            </div>
 
-        </div>
-      </GlassmorphismCard>
+          </div>
+        </GlassmorphismCard>
+      </div>
     </div>
   );
 };
