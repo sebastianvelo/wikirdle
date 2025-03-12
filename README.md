@@ -24,7 +24,7 @@ Follow these steps to set up the project locally.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/wikirdle.git
+   git clone https://github.com/sebastianvelo/wikirdle.git
    ```
 
 2. **Navigate into the project directory:**
