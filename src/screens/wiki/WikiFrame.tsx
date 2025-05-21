@@ -6,15 +6,16 @@ interface WikiFrameProps {
   isLoading: boolean;
 }
 
-const WikiFrame = (props: WikiFrameProps) => {
+const WikiFrame: React.FC<WikiFrameProps> = ({ handler, htmlContent, isLoading }) => {
+
   return (
     <>
-      {!props.isLoading && (
+      {!isLoading && (
         <div
           id="wiki"
-          className="border-2 flex align-center bg-white p-4 overflow-y-scroll h-full"
-          onClick={props.handler}
-          dangerouslySetInnerHTML={{ __html: props.htmlContent }}
+          className="w-full h-full bg-white text-black overflow-y-auto shadow-inner scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 lg:w-3/4 lg:mx-auto border-x border-blue-900/20 p-4"
+          onClick={handler}
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
         ></div>
       )}
     </>

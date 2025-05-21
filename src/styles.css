@@ -1,29 +1,75 @@
 #wiki * {
   all: revert;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 #wiki a {
   font-weight: bolder;
   text-decoration: none;
 }
-
-/* Estilos para navegadores basados en WebKit */
-::-webkit-scrollbar {
-  width: 12px; /* Ancho de la scrollbar vertical */
-  height: 12px; /* Alto de la scrollbar horizontal */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d5e0ff #172554;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color de fondo de la pista de la scrollbar */
-  border-radius: 10px; /* Bordes redondeados de la pista */
+.scrollbar::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgb(99, 99, 99); /* Color del pulgar de la scrollbar */
-  border-radius: 10px; /* Bordes redondeados del pulgar */
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #08153f;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8; /* Color del pulgar al pasar el cursor */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cedbff;
+}
+
+.wiki-custom-styles {
+  #wiki {
+    font-family: "Roboto", sans-serif;
+  }
+
+  #wiki h1,
+  #wiki h2,
+  #wiki h3 {
+    color: #2c5282;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #wiki a {
+    color: #3182ce;
+    text-decoration: none;
+  }
+
+  #wiki a:hover {
+    text-decoration: underline;
+  }
+
+  #wiki .infobox {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: #f7fafc;
+  }
+
+  #wiki .mw-editsection,
+  #wiki #mw-panel,
+  #wiki #mw-head,
+  #wiki #mw-page-base,
+  #wiki #footer,
+  #wiki #siteSub,
+  #wiki #contentSub,
+  #wiki .mw-jump-link {
+    display: none !important;
+  }
+}
+
+.font-lakki-reddy {
+  font-family: "Lakki Reddy", serif;
+  font-weight: 400;
+  font-style: normal;
 }

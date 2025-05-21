@@ -1,13 +1,13 @@
 interface LoadingSpinProps {
-    isLoading: boolean;
+  isLoading: boolean;
 }
 
-const LoadingSpin = (props: LoadingSpinProps) => {
+const LoadingSpin = ({ isLoading }: LoadingSpinProps) => {
   return (
     <>
-      {props.isLoading && (
-        <div className="h-full w-full flex align-center justify-center py-16">
-          <div className="animate-spin-slow rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-r-4 border-b-4 border-blue-500"></div>
         </div>
       )}
     </>

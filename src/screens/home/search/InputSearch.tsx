@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { searchWikipediaArticles } from "../../wikipedia/Wikipedia";
+import { useState } from "react";
+import Icons from "../../../common/icons/Icons";
+import { searchWikipediaArticles } from "../../../wikipedia/WikiService";
 import SuggestionsList from "./SuggestionsList";
 
-type SetSuggestions = React.Dispatch<React.SetStateAction<string[]>>;
-
-interface SearchBarProps {
+interface InputSearchProps {
   title: string;
   value: string;
-  setter: (value: string) => void;
+  changeValue: (value: string) => void;
 }
 
-const SearchBar = (props: SearchBarProps) => {
+const InputSearch = (props: InputSearchProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
 
@@ -25,12 +24,12 @@ const SearchBar = (props: SearchBarProps) => {
   };
 
   const handleChange = (e: any) => {
-    props.setter(e.target.value);
+    props.changeValue(e.target.value);
     handleSearch(e.target.value);
   };
 
   const handleSuggestionClick = (title: string) => {
-    props.setter(title);
+    props.changeValue(title);
     setShowSuggestions(false);
   };
 
@@ -39,17 +38,21 @@ const SearchBar = (props: SearchBarProps) => {
   };
 
   return (
-    <div>
-      <label className="block text-blue-900 font-bold mb-2">
+    <div className="relative">
+      <label className="block text-blue-300 font-bold mb-2">
         {props.title}
       </label>
-      <input
-        type="text"
-        value={props.value}
-        onChange={handleChange}
-        onClick={handleInputClick}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      />
+      <div className="relative">
+        <input
+          type="text"
+          value={props.value}
+          onChange={handleChange}
+          onClick={handleInputClick}
+          className="bg-blue-950/50 border border-blue-800/50 rounded-lg w-full p-4 text-white placeholder-blue-300/60 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+          placeholder="Ej: Argentina"
+        />
+        <Icons.Search />
+      </div>
       <SuggestionsList
         handler={handleSuggestionClick}
         showSuggestions={showSuggestions}
@@ -59,4 +62,4 @@ const SearchBar = (props: SearchBarProps) => {
   );
 };
 
-export default SearchBar;
+export default InputSearch;

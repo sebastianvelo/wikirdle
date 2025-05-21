@@ -8,12 +8,12 @@ const SuggestionsList = (props: SuggestionsListProps) => {
   return (
     <>
       {props.showSuggestions && props.suggestions.length > 0 && (
-        <ul className="mt-2 border border-gray-300 rounded bg-gray-200 fixed z-20 overflow-scroll h-64 w-1/2">
+        <ul className="absolute z-10 mt-1 w-full bg-blue-950 border border-blue-800 rounded-lg shadow-lg max-h-60 overflow-auto">
           {props.suggestions.map((title: string) => (
             <li
               key={title}
               onClick={() => props.handler(title)}
-              className="px-4 py-2 cursor-pointer hover:bg-blue-300"
+              className="px-4 py-3 hover:bg-blue-800 cursor-pointer border-b border-blue-800/50 last:border-0"
             >
               {title}
             </li>

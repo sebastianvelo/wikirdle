@@ -6,11 +6,10 @@ const DEFAULT_HEADERS = {
     },
 };
 
-const Endpoint = {
+const ENDPOINT = {
     search: 'https://es.wikipedia.org/w/api.php',
     mobileHTML: (encodedTitle: string) => `https://es.m.wikipedia.org/api/rest_v1/page/mobile-html/${encodedTitle}`
 };
-
 
 export const searchWikipediaArticles = async (query: string): Promise<string[]> => {
     const params = {
@@ -22,7 +21,7 @@ export const searchWikipediaArticles = async (query: string): Promise<string[]> 
     };
 
     try {
-        const response = await axios.get(Endpoint.search, { params });
+        const response = await axios.get(ENDPOINT.search, { params });
         const data = response.data;
         if (!data.query?.search) return [];
 
@@ -37,7 +36,7 @@ export const searchWikipediaArticles = async (query: string): Promise<string[]> 
 export const getWikipediaMobileHtml = async (articleTitle: string): Promise<string> => {
     const encodedTitle = encodeURIComponent(articleTitle);
     try {
-        const response = await axios.get(Endpoint.mobileHTML(encodedTitle), DEFAULT_HEADERS);
+        const response = await axios.get(ENDPOINT.mobileHTML(encodedTitle), DEFAULT_HEADERS);
         const html = response.data;
         return html;
     } catch (error) {
