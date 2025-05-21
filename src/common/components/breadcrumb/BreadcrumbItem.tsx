@@ -8,7 +8,7 @@ interface BreadcrumbItemProps {
 }
 
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({ index, isCurrent, value }) => {
-    const statusClassName = isCurrent ? "bg-primary-700 text-white" : "bg-primary-800/50"
+    const statusClassName = isCurrent ? "bg-primary-700 text-white" : "bg-primary-800/50 text-white"
 
     return (
         <>

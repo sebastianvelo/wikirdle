@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Icons from "../../../common/icons/Icons";
+import useClickOutside from "../../../hooks/app/useClickOutside";
 import { searchWikipediaArticles } from "../../../wikipedia/WikiService";
 import SuggestionsList from "./SuggestionsList";
 
@@ -12,6 +13,9 @@ interface InputSearchProps {
 const InputSearch = (props: InputSearchProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(wrapperRef, () => setShowSuggestions(false));
 
   const handleSearch = async (query: string) => {
     if (query.length < 3) return;
@@ -38,8 +42,8 @@ const InputSearch = (props: InputSearchProps) => {
   };
 
   return (
-    <div className="relative">
-      <label className="block text-primary-300 font-bold mb-2">
+    <div className="relative" ref={wrapperRef}>
+      <label className="block text-primary-900 dark:text-primary-300 font-bold mb-2">
         {props.title}
       </label>
       <div className="relative">
@@ -48,7 +52,7 @@ const InputSearch = (props: InputSearchProps) => {
           value={props.value}
           onChange={handleChange}
           onClick={handleInputClick}
-          className="bg-primary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-white placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
+          className="bg-primary-100/50 dark:bg-primary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-black placeholder-primary-800/60 dark:text-white dark:placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
           placeholder="Ej: Argentina"
         />
         <Icons.Search />

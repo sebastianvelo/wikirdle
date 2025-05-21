@@ -23,19 +23,21 @@ const CongratsScreen: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <>
       <Header />
-      <GlassCard className="lg:w-1/2 lg:mx-auto">
-        <div className="p-8">
-          <h1 className="text-4xl font-bold mb-6 text-center text-green-400">¡Felicitaciones!</h1>
-          <div className="space-y-8">
-            <CongratsStats />
-            <CongratsGamePath />
-            <CongratsActions />
+      <div className="flex flex-col min-h-screen w-full items-center justify-center">
+        <GlassCard className="lg:w-1/2 lg:mx-auto">
+          <div className="p-8">
+            <h1 className="text-4xl font-bold mb-6 text-center text-green-400">¡Felicitaciones!</h1>
+            <div className="space-y-8">
+              <CongratsStats />
+              <CongratsGamePath />
+              <CongratsActions />
+            </div>
           </div>
-        </div>
-      </GlassCard>
-    </div>
+        </GlassCard>
+      </div>
+    </>
   );
 };
 

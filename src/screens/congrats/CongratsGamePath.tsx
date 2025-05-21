@@ -4,7 +4,7 @@ import GamePathBreadcrumb from "../../common/components/breadcrumb/GamePathBread
 const CongratsGamePath: React.FC = () => {
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-3">Tu recorrido:</h2>
+      <h2 className="text-xl font-semibold mb-3 dark:text-white">Tu recorrido:</h2>
       <GamePathBreadcrumb />
     </div>
   );

@@ -10,7 +10,7 @@ import "./output.css";
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-bl from-primary-950 to-black text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-tl from-primary-100 via-white to-primary-200 dark:from-primary-950 dark:to-black flex flex-col">
       <Router>
         <AppProvider>
           <Routes>

@@ -69,7 +69,7 @@ const Select: React.FC<SelectProps> = ({ label = "", name, value = "", options, 
                 {options.map((option) => (
                     <button
                         key={option.value}
-                        className="w-full text-left px-3 py-2 text-sm cursor-pointer hover:bg-accent-200/80 dark:hover:bg-accent-900/80 dark:text-secondary-100 transition-colors duration-150"
+                        className="w-full text-left px-3 py-2 text-sm cursor-pointer hover:bg-accent-200/80 dark:hover:bg-accent-900/80 dark:text-secondary-100 transition-colors duration-150 z-50"
                         onClick={() => handleOptionSelect(option)}
                         role="option"
                         aria-selected={value.toString() === option.value.toString()}

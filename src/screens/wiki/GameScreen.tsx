@@ -6,14 +6,14 @@ import GameHeader from "./header/GameHeader";
 
 const GameScreen: React.FC = () => {
   const { gameState } = useWikiGame();
-  
+
   return (
     <div className="flex flex-col h-screen">
       <GameHeader />
       <main className="flex-1 flex relative overflow-hidden">
         <WikiFrame />
-        <LoadingSpin isLoading={gameState.isLoading} />
       </main>
+      <LoadingSpin isLoading={gameState.isLoading} />
     </div>
   );
 };
