@@ -8,7 +8,7 @@ const contacts = [
     {
         "id": "mail",
         "name": "sebastianvelo.it@gmail.com",
-        "color": "bg-gradient-to-r hover:from-blue-100 hover:via-red-50 hover:to-gray-100",
+        "color": "bg-gradient-to-r hover:from-primary-100 hover:via-red-50 hover:to-gray-100",
         "image": "https://github.com/SebastianVelo/portfolio-static/blob/main/img/contact/email.png?raw=true",
         "url": "mailto:sebastianvelo.it@gmail.com"
     },

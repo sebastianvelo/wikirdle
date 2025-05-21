@@ -17,10 +17,10 @@ const GameStats: React.FC<GameStatsProps> = ({ toggleShowPath }) => {
         <GameStat label="Clicks" value={gameState.clickCount} />
       </div>
       <div className="flex gap-2">
-        <button onClick={toggleShowPath} className="p-2 rounded-full hover:bg-blue-800/50 transition-colors" title="Ver ruta">
+        <button onClick={toggleShowPath} className="p-2 rounded-full hover:bg-primary-800/50 transition-colors" title="Ver ruta">
           <Icons.Hamburger />
         </button>
-        <button onClick={resetGame} className="p-2 rounded-full hover:bg-blue-800/50 transition-colors" title="Reiniciar juego">
+        <button onClick={resetGame} className="p-2 rounded-full hover:bg-primary-800/50 transition-colors" title="Reiniciar juego">
           <Icons.Reset />
         </button>
       </div>

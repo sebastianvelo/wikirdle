@@ -33,11 +33,11 @@ const CongratsStats: React.FC = () => {
       <div className="grid grid-cols-2 gap-4 text-center">
         <GlassCard className="p-4">
           <p className="text-sm text-gray-300">Número de clics</p>
-          <p className="text-3xl font-bold text-blue-400">{gameState.clickCount}</p>
+          <p className="text-3xl font-bold text-primary-400">{gameState.clickCount}</p>
         </GlassCard>
         <GlassCard className="p-4">
           <p className="text-sm text-gray-300">Tiempo total</p>
-          <p className="text-3xl font-bold text-blue-400">{formatTime(gameState.gameDuration)}</p>
+          <p className="text-3xl font-bold text-primary-400">{formatTime(gameState.gameDuration)}</p>
         </GlassCard>
       </div>
     </>

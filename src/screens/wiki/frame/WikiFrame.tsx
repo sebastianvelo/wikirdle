@@ -9,7 +9,7 @@ const WikiFrame: React.FC = () => {
       {!gameState.isLoading && (
         <div
           id="wiki"
-          className="w-full h-full bg-white text-black overflow-y-auto shadow-inner scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 lg:w-3/4 lg:mx-auto border-x border-blue-900/20 p-4"
+          className="w-full h-full bg-white text-black overflow-y-auto shadow-inner scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-gray-200 lg:w-3/4 lg:mx-auto border-x border-primary-900/20 p-4"
           onClick={handleLinkClick}
           dangerouslySetInnerHTML={{ __html: gameState.htmlContent }}
         ></div>

@@ -39,7 +39,7 @@ const InputSearch = (props: InputSearchProps) => {
 
   return (
     <div className="relative">
-      <label className="block text-blue-300 font-bold mb-2">
+      <label className="block text-primary-300 font-bold mb-2">
         {props.title}
       </label>
       <div className="relative">
@@ -48,7 +48,7 @@ const InputSearch = (props: InputSearchProps) => {
           value={props.value}
           onChange={handleChange}
           onClick={handleInputClick}
-          className="bg-blue-950/50 border border-blue-800/50 rounded-lg w-full p-4 text-white placeholder-blue-300/60 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+          className="bg-primary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-white placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
           placeholder="Ej: Argentina"
         />
         <Icons.Search />
