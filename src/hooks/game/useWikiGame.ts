@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import WikiGameContext from "../context/wiki-game/WikiGameContext";
+import WikiGameContext from "../../context/wiki-game/WikiGameContext";
 
 const useWikiGame = () => {
   const context = useContext(WikiGameContext);

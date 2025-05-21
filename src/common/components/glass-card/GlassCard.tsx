@@ -7,7 +7,7 @@ interface GlassCardProps {
 
 const GlassCard: React.FC<GlassCardProps> = ({ children, className }) => {
   return (
-    <section className={`bg-blue-900/30 backdrop-blur-md rounded-xl border border-blue-700/40 shadow-lg overflow-hidden ${className}`}>
+    <section className={`bg-black/30 backdrop-blur-md border border-white/10 shadow-lg overflow-hidden ${className}`}>
       {children}
     </section>
   );

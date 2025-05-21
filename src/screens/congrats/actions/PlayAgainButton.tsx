@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../../../common/components/button/Button";
 import { ScreenPath } from "../../../common/utils/utils";
-import useWikiGame from "../../../hooks/useWikiGame";
+import useWikiGame from "../../../hooks/game/useWikiGame";
 
 const PlayAgainButton: React.FC = () => {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const PlayAgainButton: React.FC = () => {
   };
 
   return (
-    <button onClick={playAgain} className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors">
-      Jugar de nuevo (mismos artículos)
-    </button>
+    <Button onClick={playAgain}>
+      Jugar de nuevo
+    </Button>
   );
 };
 

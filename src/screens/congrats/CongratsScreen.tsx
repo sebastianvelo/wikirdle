@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import GlassCard from "../../common/components/GlassCard";
+import GlassCard from "../../common/components/glass-card/GlassCard";
 import { ScreenPath } from "../../common/utils/utils";
-import useWikiGame from "../../hooks/useWikiGame";
+import useWikiGame from "../../hooks/game/useWikiGame";
+import Header from "../../layout/header/Header";
 import CongratsGamePath from "./CongratsGamePath";
 import CongratsStats from "./CongratsStats";
 import CongratsActions from "./actions/CongratsActions";
@@ -22,15 +23,16 @@ const CongratsScreen: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4">
-      <GlassCard>
+    <div className="flex flex-col min-h-screen w-full">
+      <Header />
+      <GlassCard className="lg:w-1/2 lg:mx-auto">
         <div className="p-8">
-        <h1 className="text-4xl font-bold mb-6 text-center text-green-400">¡Felicitaciones!</h1>
-        <div className="space-y-8">
-          <CongratsStats />
-          <CongratsGamePath />
-          <CongratsActions />
-        </div>
+          <h1 className="text-4xl font-bold mb-6 text-center text-green-400">¡Felicitaciones!</h1>
+          <div className="space-y-8">
+            <CongratsStats />
+            <CongratsGamePath />
+            <CongratsActions />
+          </div>
         </div>
       </GlassCard>
     </div>

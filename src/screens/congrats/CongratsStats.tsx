@@ -1,7 +1,7 @@
 import React from "react";
-import GlassCard from "../../common/components/GlassCard";
+import GlassCard from "../../common/components/glass-card/GlassCard";
 import { formatTime } from "../../common/utils/utils";
-import useWikiGame from "../../hooks/useWikiGame";
+import useWikiGame from "../../hooks/game/useWikiGame";
 
 const CongratsStats: React.FC = () => {
   const { gameState, isGameActive } = useWikiGame();

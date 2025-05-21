@@ -1,5 +1,6 @@
+import Button from "../../../common/components/button/Button";
 import { formatTime } from "../../../common/utils/utils";
-import useWikiGame from "../../../hooks/useWikiGame";
+import useWikiGame from "../../../hooks/game/useWikiGame";
 
 const ShareButton: React.FC = () => {
   const { first, last, gameState } = useWikiGame();
@@ -12,11 +13,9 @@ const ShareButton: React.FC = () => {
   };
 
   return (
-    <div className="text-center pt-2">
-      <button onClick={copyInClipboard} className="text-sm text-blue-400 hover:text-blue-300">
-        Compartir resultados
-      </button>
-    </div>
+    <Button onClick={copyInClipboard}>
+      Compartir resultados
+    </Button>
   );
 };
 

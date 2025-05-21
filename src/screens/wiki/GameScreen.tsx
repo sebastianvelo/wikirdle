@@ -1,17 +1,17 @@
 import React from "react";
-import LoadingSpin from "../../common/components/LoadingSpin";
-import useWikiGame from "../../hooks/useWikiGame";
-import GameHeader from "./GameHeader";
-import WikiFrame from "./WikiFrame";
+import LoadingSpin from "../../common/components/loading/LoadingSpin";
+import useWikiGame from "../../hooks/game/useWikiGame";
+import WikiFrame from "./frame/WikiFrame";
+import GameHeader from "./header/GameHeader";
 
 const GameScreen: React.FC = () => {
-  const { gameState, handleLinkClick, resetGame } = useWikiGame();
-
+  const { gameState } = useWikiGame();
+  
   return (
     <div className="flex flex-col h-screen">
-      <GameHeader clickCount={gameState.clickCount} destination={gameState.destination} onReset={resetGame} gamePath={gameState.gamePath} />
+      <GameHeader />
       <main className="flex-1 flex relative overflow-hidden">
-        <WikiFrame htmlContent={gameState.htmlContent} handler={handleLinkClick} isLoading={gameState.isLoading} />
+        <WikiFrame />
         <LoadingSpin isLoading={gameState.isLoading} />
       </main>
     </div>

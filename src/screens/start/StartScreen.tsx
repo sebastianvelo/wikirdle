@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import GlassCard from "../../common/components/GlassCard";
-import Icons from "../../common/icons/Icons";
-import Header from "./HomeHeader";
+import GlassCard from "../../common/components/glass-card/GlassCard";
+import Header from "../../layout/header/Header";
 import InputSearch from "./search/InputSearch";
 import StartGameButton from "./search/StartGameButton";
 
-const HomeScreen: React.FC = () => {
+const StartScreen: React.FC = () => {
   const [startArticle, setStartArticle] = useState("");
   const [destination, setDestination] = useState("");
 
@@ -54,4 +53,4 @@ const HomeScreen: React.FC = () => {
   );
 };
 
-export default HomeScreen;
+export default StartScreen;
