@@ -3,10 +3,10 @@ import { formatTime } from "../../../common/utils/utils";
 import useWikiGame from "../../../hooks/game/useWikiGame";
 
 const ShareButton: React.FC = () => {
-  const { first, last, gameState } = useWikiGame();
+  const { state } = useWikiGame();
 
   const copyInClipboard = () => {
-    const text = `¡Conecté ${first} con ${last} en ${gameState.clickCount} clics y ${formatTime(gameState.gameDuration)}!`;
+    const text = `¡Conecté ${state.gamePath[0]} con ${state.destination} en ${state.clickCount} clics y ${formatTime(state.gameDuration ?? 0)}!`;
     navigator.clipboard.writeText(text)
       .then(() => alert("¡Resultados copiados al portapapeles!"))
       .catch(() => alert("No se pudo copiar al portapapeles"));

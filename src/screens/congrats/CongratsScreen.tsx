@@ -10,15 +10,15 @@ import CongratsActions from "./actions/CongratsActions";
 
 const CongratsScreen: React.FC = () => {
   const navigate = useNavigate();
-  const { gameState, isGameActive } = useWikiGame();
+  const { state } = useWikiGame();
 
   useEffect(() => {
-    if (!isGameActive || !gameState.hasWon) {
+    if (!state.hasWon) {
       navigate(ScreenPath.home);
     }
-  }, [isGameActive, gameState.hasWon, navigate]);
+  }, [state.hasWon, navigate]);
 
-  if (!isGameActive || gameState.gamePath.length === 0) {
+  if (state.gamePath.length === 0) {
     return <div className="bg-gray-900 text-white min-h-screen flex items-center justify-center">Cargando...</div>;
   }
 
@@ -28,7 +28,7 @@ const CongratsScreen: React.FC = () => {
       <div className="flex flex-col min-h-screen w-full items-center justify-center">
         <GlassCard className="lg:w-1/2 lg:mx-auto">
           <div className="p-8">
-            <h1 className="text-4xl font-bold mb-6 text-center text-green-400">¡Felicitaciones!</h1>
+            <h1 className="text-4xl font-bold mb-6 text-center text-primary-600 dark:text-primary-400">¡Felicitaciones!</h1>
             <div className="space-y-8">
               <CongratsStats />
               <CongratsGamePath />

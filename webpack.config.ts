@@ -47,6 +47,7 @@ const config: Configuration = {
         compress: true,
         port: 3000,
         hot: true,
+        historyApiFallback: true,
     },
 };
 

@@ -10,12 +10,12 @@ import "./output.css";
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-tl from-primary-100 via-white to-primary-200 dark:from-primary-950 dark:to-black flex flex-col">
+    <div className="h-screen overflow-hidden lg:h-auto lg:min-h-screen bg-gradient-to-tl from-primary-100 via-white to-primary-200 dark:from-primary-950 dark:to-black flex flex-col">
       <Router>
         <AppProvider>
           <Routes>
             <Route path={ScreenPath.home} element={<StartScreen />} />
-            <Route path={ScreenPath.wiki} element={<GameScreen />} />
+            <Route path={ScreenPath.wikiPattern} element={<GameScreen />} />
             <Route path={ScreenPath.congrats} element={<CongratsScreen />} />
           </Routes>
         </AppProvider>

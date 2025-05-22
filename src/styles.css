@@ -14,6 +14,11 @@
   font-weight: bolder;
   text-decoration: none;
 }
+
+.dark #wiki a {
+  color: #E26F00;
+}
+
 .scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #d5e0ff #172554;

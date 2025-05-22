@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import WikiGameContext from "../../context/wiki-game/WikiGameContext";
+import { WikiGameContextType } from "../../context/wiki-game/types";
 
-const useWikiGame = () => {
+const useWikiGame = (): WikiGameContextType => {
   const context = useContext(WikiGameContext);
   
   if (context === undefined) {

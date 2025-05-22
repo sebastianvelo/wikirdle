@@ -1,19 +1,22 @@
 export const ScreenPath = {
   home: "/",
   congrats: "/congrats",
-  wiki: `/wiki/:article`,
-  getWiki: (origin: string, destination: string) => {
-    const originPath = `/wiki/${encodeURIComponent(origin)}`;
-    const destinationParam = `destination=${encodeURIComponent(destination)}`;
-    return `${originPath}?${destinationParam}`;
-  },
-};
+  wiki: (startArticle: string, destination: string) =>
+    `/wiki/${encodeURIComponent(startArticle)}/to/${encodeURIComponent(destination)}`,
+  wikiPattern: "/wiki/:startArticle/to/:destination",
+} as const;
 
-export const Params = {
+export const RouteParams = {
+  startArticle: "startArticle",
+  destination: "destination",
+} as const;
+
+export const GameParams = {
   gamePath: "gamePath",
   clickCount: "clickCount",
-  gameDuration: "duration"
-};
+  gameDuration: "duration",
+  destination: "destination",
+} as const;
 
 export const formatTime = (seconds: number): string => {
   if (seconds < 60) return `${seconds} segundos`;

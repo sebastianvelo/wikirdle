@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import GlassCard from "../../common/components/glass-card/GlassCard";
-import InputSearch from "./search/InputSearch";
-import StartGameButton from "./search/StartGameButton";
+import GlassCard from "../../../common/components/glass-card/GlassCard";
+import InputSearch from "./InputSearch";
+import StartGameButton from "./StartGameButton";
 
-const GameSearchCard: React.FC = () => {
+const SearchCard: React.FC = () => {
   const [startArticle, setStartArticle] = useState("");
   const [destination, setDestination] = useState("");
 
@@ -23,4 +23,4 @@ const GameSearchCard: React.FC = () => {
   );
 };
 
-export default GameSearchCard;
+export default SearchCard;

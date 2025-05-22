@@ -1,248 +1,140 @@
-import { ReactNode, useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { ScreenPath } from '../../common/utils/utils';
-import { getWikipediaMobileHtml } from '../../wikipedia/WikiService';
-import WikiGameContext, { WikiGameContextType, WikiGameState } from './WikiGameContext';
+import { useEffect, useReducer } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ScreenPath } from "../../common/utils/utils";
+import { getWikipediaMobileHtml } from "../../wikipedia/WikiService";
+import { WikiGameContextType } from "./types";
+import { wikiGameActions } from "./WikiGameActions";
+import WikiGameContext from "./WikiGameContext";
+import { initialState, wikiGameReducer } from "./WikiGameReducer";
 
-interface WikiGameProviderProps {
-  children: ReactNode;
-}
-
-const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
+const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, dispatch] = useReducer(wikiGameReducer, initialState);
   const navigate = useNavigate();
   const location = useLocation();
-  const { article } = useParams<{ article: string }>();
 
-  const [gameState, setGameState] = useState<WikiGameState>({
-    clickCount: 0,
-    gamePath: [],
-    destination: '',
-    htmlContent: '',
-    isLoading: false,
-    gameStartTime: new Date(),
-    gameDuration: 0,
-    hasWon: false
-  });
+  const normalizeArticleName = (articleName: string): string => {
+    return articleName.trim().replace(/_/g, ' ');
+  };
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const dest = params.get('destination');
+  const extractArticleFromAnchor = (anchor: HTMLAnchorElement): string => {
+    const url = new URL(anchor.href);
+    const clickedArticle = decodeURIComponent(url.pathname.split("/").pop() ?? "");
+    return normalizeArticleName(clickedArticle);
+  };
 
-    if (dest) {
-      setGameState(prev => ({
-        ...prev,
-        destination: dest
-      }));
-    }
-  }, [location.search]);
+  const stripSupTags = (html: string): string => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    doc.querySelectorAll('sup').forEach(el => el.remove());
+    return doc.body.innerHTML;
+  }
 
+  const fetchArticleContent = async (articleTitle: string): Promise<void> => {
+    const normalizedDestination = normalizeArticleName(state.destination);
+    const normalizedClicked = normalizeArticleName(articleTitle);
 
-  useEffect(() => {
-    if (!article) return;
-
-    if (gameState.gamePath.length === 0) {
-      setGameState(prev => ({
-        ...prev,
-        gamePath: [decodeURIComponent(article).replace(/_/g, ' ')],
-        gameStartTime: new Date(),
-        clickCount: 0,
-        hasWon: false
-      }));
+    if (normalizedClicked === normalizedDestination) {
+      dispatch(wikiGameActions.winGame());
+      navigate(ScreenPath.congrats);
+      return;
     }
 
-    const fetchArticle = async () => {
-      try {
-        setGameState(prev => ({ ...prev, isLoading: true }));
+    dispatch(wikiGameActions.setLoading(true));
 
-        if (gameState.destination) {
-          const normalizedArticle = decodeURIComponent(article).toLowerCase().replace(/_/g, ' ');
-          const normalizedDestination = gameState.destination.toLowerCase().replace(/_/g, ' ');
-
-          if (normalizedArticle === normalizedDestination && !gameState.hasWon) {
-            const endTime = new Date();
-            const duration = Math.floor((endTime.getTime() - gameState.gameStartTime.getTime()) / 1000);
-
-            setGameState(prev => ({
-              ...prev,
-              isLoading: false,
-              hasWon: true,
-              gameDuration: duration
-            }));
-
-            navigate(ScreenPath.congrats);
-            return;
-          }
-        }
-
-        const pageContent = await getWikipediaMobileHtml(article);
-        if (!pageContent) throw new Error("Article not found");
-
-        const processedContent = pageContent.replace("<base ", "<base-disabled ");
-
-        setGameState(prev => ({
-          ...prev,
-          htmlContent: processedContent,
-          isLoading: false
-        }));
-      } catch (error) {
-        console.error("Error fetching article:", error);
-        setGameState(prev => ({ ...prev, isLoading: false }));
-        navigate(ScreenPath.home);
-      }
-    };
-
-    fetchArticle();
-  }, [article, gameState.destination, gameState.gameStartTime, gameState.hasWon, navigate]);
-
-  const startGame = async (startArticle: string, destination: string) => {
     try {
-      setGameState(prev => ({
-        ...prev,
-        isLoading: true
-      }));
+      const htmlContent = await getWikipediaMobileHtml(articleTitle);
 
-      const encodedStart = encodeURIComponent(startArticle.split(' ').join('_'));
-
-      if (startArticle.toLowerCase() === destination.toLowerCase()) {
-        setGameState({
-          clickCount: 0,
-          gamePath: [startArticle],
-          destination: destination,
-          htmlContent: '',
-          isLoading: false,
-          gameStartTime: new Date(),
-          gameDuration: 0,
-          hasWon: true
-        });
-
-        navigate(ScreenPath.congrats);
-        return;
+      if (!htmlContent) {
+        throw new Error(`No se pudo cargar el artículo: ${articleTitle}`);
       }
 
-      const pageContent = await getWikipediaMobileHtml(encodedStart);
-      if (!pageContent) throw new Error("Start article not found");
-
-      const processedContent = pageContent.replace("<base ", "<base-disabled ");
-
-      setGameState({
-        clickCount: 0,
-        gamePath: [startArticle],
-        destination: destination,
-        htmlContent: processedContent,
-        isLoading: false,
-        gameStartTime: new Date(),
-        gameDuration: 0,
-        hasWon: false
-      });
-
-      navigate(ScreenPath.getWiki(encodedStart, destination));
+      const processedContent = htmlContent.replace("<base ", "<base-dis ");
+      dispatch(wikiGameActions.setContent(stripSupTags(processedContent), normalizeArticleName(articleTitle)));
     } catch (error) {
-      console.error("Error starting game:", error);
-      setGameState(prev => ({ ...prev, isLoading: false }));
+      console.error('Error fetching article:', error);
+      dispatch(wikiGameActions.setError(`Error al cargar el artículo: ${articleTitle}`));
       navigate(ScreenPath.home);
     }
   };
 
-  const handleLinkClick = async (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
+  const startGame = async (startArticle: string, destination: string): Promise<void> => {
+    dispatch(wikiGameActions.startGame(startArticle, destination));
+    navigate(ScreenPath.wiki(encodeURIComponent(startArticle), encodeURIComponent(destination)));
+    await fetchArticleContent(startArticle);
+  };
 
-    const target = e.target as HTMLElement;
-    const anchor = target.tagName === "A" ? target as HTMLAnchorElement :
-      target.closest("a") as HTMLAnchorElement | null;
+  const handleLinkClick = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    if (!anchor || !anchor.href) return;
+    const target = event.target as HTMLElement;
+    const anchor = target.closest('a');
 
-    if (anchor.href.includes("#")) {
-      const url = new URL(anchor.href);
-      if (url.hash && url.pathname === window.location.pathname) {
-        return;
-      }
+    if (!anchor) {
+      return;
     }
 
-    setGameState(prev => ({
-      ...prev,
-      isLoading: true
-    }));
-
     try {
-      const url = new URL(anchor.href);
-      const clickedArticle = decodeURIComponent(
-        url.pathname.split("/").pop() ?? ""
-      );
+      const clickedArticle = extractArticleFromAnchor(anchor);
 
-      const articleName = clickedArticle.split("_").join(" ");
-
-      const normalizedClickedArticle = articleName.toLowerCase();
-      const normalizedDestination = gameState.destination.toLowerCase().replace(/_/g, ' ');
-
-      if (normalizedClickedArticle === normalizedDestination) {
-        const endTime = new Date();
-        const duration = Math.floor((endTime.getTime() - gameState.gameStartTime.getTime()) / 1000);
-
-        setGameState(prev => ({
-          ...prev,
-          isLoading: false,
-          hasWon: true,
-          gameDuration: duration,
-          clickCount: prev.clickCount + 1,
-          gamePath: [...prev.gamePath, articleName]
-        }));
-
-        navigate(ScreenPath.congrats);
+      if (!clickedArticle) {
+        console.warn('No se pudo extraer el nombre del artículo');
         return;
       }
 
-      const pageContent = await getWikipediaMobileHtml(clickedArticle);
-      if (!pageContent) throw new Error("Article not found");
+      dispatch(wikiGameActions.handleClick(clickedArticle));
 
-      const processedContent = pageContent.replace("<base ", "<base-disabled ");
+      await fetchArticleContent(clickedArticle);
 
-      setGameState(prev => {
-        const newClickCount = prev.clickCount + 1;
-        const newPath = [...prev.gamePath, articleName];
-
-        return {
-          ...prev,
-          isLoading: false,
-          htmlContent: processedContent,
-          clickCount: newClickCount,
-          gamePath: newPath,
-        };
-      });
-
-      navigate(ScreenPath.getWiki(clickedArticle, gameState.destination));
     } catch (error) {
-      console.error("Error processing link click:", error);
-      setGameState(prev => ({ ...prev, isLoading: false }));
+      console.error('Error handling link click:', error);
+      dispatch(wikiGameActions.setError('Error al procesar el enlace clicado'));
     }
   };
 
-  const resetGame = () => {
-    setGameState({
-      clickCount: 0,
-      gamePath: [],
-      destination: '',
-      htmlContent: '',
-      isLoading: false,
-      gameStartTime: new Date(),
-      gameDuration: 0,
-      hasWon: false
-    });
-
+  const resetGame = (): void => {
+    dispatch(wikiGameActions.resetGame());
     navigate(ScreenPath.home);
   };
 
-  const isGameActive = gameState.gamePath.length > 0 && gameState.destination !== '';
+  const replayGame = async (): Promise<void> => {
+    if (!state.lastGameConfig) {
+      console.warn('No hay configuración de juego anterior para repetir');
+      navigate(ScreenPath.home);
+      return;
+    }
+
+    const { startArticle, destination } = state.lastGameConfig;
+    await startGame(startArticle, destination);
+  };
+
+  const clearError = (): void => {
+    dispatch(wikiGameActions.clearError());
+  };
+
+  useEffect(() => {
+    const path = location.pathname;
+    const gameRouteMatch = path.match(/^\/wiki\/(.+)\/to\/(.+)$/);
+
+    if (gameRouteMatch) {
+      const [, startArticle, endArticle] = gameRouteMatch;
+      const decodedStart = decodeURIComponent(startArticle);
+      const decodedEnd = decodeURIComponent(endArticle);
+
+      if (!state.htmlContent && !state.isLoading && !state.error) {
+        dispatch(wikiGameActions.startGame(decodedStart, decodedEnd));
+        fetchArticleContent(decodedStart);
+      }
+    }
+  }, [location.pathname, state.htmlContent, state.isLoading, state.error]);
 
   const contextValue: WikiGameContextType = {
-    gameState,
-    currentArticle: article ? decodeURIComponent(article).replace(/_/g, ' ') : '',
+    state,
     startGame,
     handleLinkClick,
     resetGame,
-    isGameActive,
-    first: gameState.gamePath[0],
-    last: gameState.gamePath[gameState.gamePath.length - 1]
+    replayGame,
+    clearError,
   };
 
   return (

@@ -2,16 +2,16 @@ import React from "react";
 import useWikiGame from "../../../hooks/game/useWikiGame";
 
 const WikiFrame: React.FC = () => {
-  const { gameState, handleLinkClick } = useWikiGame();
+  const { state, handleLinkClick } = useWikiGame();
 
   return (
     <>
-      {!gameState.isLoading && (
+      {!state.isLoading && (
         <div
           id="wiki"
-          className="w-full h-full bg-white text-black overflow-y-auto shadow-inner scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-gray-200 lg:w-3/4 lg:mx-auto border-x border-primary-900/20 p-4"
+          className="lg:rounded-md dark:invert w-full h-full bg-white/50 text-black text-justify shadow-inner scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-gray-200 lg:w-3/4 lg:mx-auto border-x border-primary-900/20 p-4 max-h-screen overflow-y-scroll overflow-x-hidden"
           onClick={handleLinkClick}
-          dangerouslySetInnerHTML={{ __html: gameState.htmlContent }}
+          dangerouslySetInnerHTML={{ __html: state.htmlContent }}
         ></div>
       )}
     </>
