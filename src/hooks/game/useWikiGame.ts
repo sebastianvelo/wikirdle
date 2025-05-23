@@ -6,7 +6,7 @@ const useWikiGame = (): WikiGameContextType => {
   const context = useContext(WikiGameContext);
   
   if (context === undefined) {
-    throw new Error('useWikiGame debe ser usado dentro de un WikiGameProvider');
+    throw new Error("useWikiGame debe ser usado dentro de un WikiGameProvider");
   }
   
   return context;

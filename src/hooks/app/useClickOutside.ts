@@ -1,4 +1,4 @@
-import { useEffect, RefObject } from 'react';
+import { useEffect, RefObject } from "react";
 
 /**
  * Hook personalizado que detecta clics fuera de un elemento específico
@@ -16,10 +16,10 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
             }
         };
 
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [ref, callback]);
 };

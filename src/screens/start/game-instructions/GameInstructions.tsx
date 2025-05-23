@@ -1,5 +1,5 @@
 import GlassCard from "../../../common/components/glass-card/GlassCard";
-import InstructionItem from '../../../common/components/instruction-item/InstructionItem';
+import InstructionItem from "../../../common/components/instruction-item/InstructionItem";
 
 const GameInstructions: React.FC = () => {
   return (

@@ -48,7 +48,7 @@ const Select: React.FC<SelectProps> = ({ label = "", name, value = "", options, 
             </label>
 
             <div
-                className={`${selectTriggerClassName} ${isOpen ? 'ring-2 ring-accent-500 border-accent-500 dark:ring-accent-300 dark:border-accent-300' : ''}`}
+                className={`${selectTriggerClassName} ${isOpen ? "ring-2 ring-accent-500 border-accent-500 dark:ring-accent-300 dark:border-accent-300" : ""}`}
                 onClick={toggleDropdown}
                 tabIndex={0}
                 role="combobox"

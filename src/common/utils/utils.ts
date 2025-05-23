@@ -22,5 +22,5 @@ export const formatTime = (seconds: number): string => {
   if (seconds < 60) return `${seconds} segundos`;
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes} minuto${minutes > 1 ? 's' : ''} y ${remainingSeconds} segundo${remainingSeconds !== 1 ? 's' : ''}`;
+  return `${minutes} minuto${minutes > 1 ? "s" : ""} y ${remainingSeconds} segundo${remainingSeconds !== 1 ? "s" : ""}`;
 };

@@ -3,9 +3,9 @@ import { WikiGameAction, WikiGameActionTypes } from "./WikiGameActions";
 
 export const initialState: WikiGameState = {
     isLoading: false,
-    htmlContent: '',
-    currentArticle: '',
-    destination: '',
+    htmlContent: "",
+    currentArticle: "",
+    destination: "",
     gamePath: [],
     clickCount: 0,
     gameStartTime: null,
