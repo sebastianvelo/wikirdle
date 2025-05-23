@@ -4,7 +4,7 @@ import ThemeToggleButton from "./actions/ThemeToggleButton";
 
 const Header: React.FC = () => {
     return (
-        <header className="bg-white/80 dark:bg-black/40 backdrop-blur-sm py-4 px-6 border-b border-primary-200/50 dark:border-primary-800/50 shadow-lg">
+        <header className="bg-white/80 dark:bg-black/40 backdrop-blur-sm py-4 px-6 border-b border-primary-200/50 dark:border-primary-800/50 shadow-lg z-50">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
                 <Brand />
                 {/*<div className="flex gap-x-4">

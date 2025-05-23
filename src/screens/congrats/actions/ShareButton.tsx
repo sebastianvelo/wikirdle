@@ -3,6 +3,7 @@ import { formatTime } from "@common/utils/utils";
 import I18n from "@context/language/common/I18nKeys";
 import useI18N from "@hooks/app/useI18N";
 import useWikiGame from "@hooks/game/useWikiGame";
+import { Share2 } from "lucide-react";
 
 const ShareButton: React.FC = () => {
   const { p } = useI18N();
@@ -17,7 +18,7 @@ const ShareButton: React.FC = () => {
 
   return (
     <Button onClick={copyInClipboard}>
-      {I18n.CONGRATS.SHARE_BUTTON}
+      <Share2 />
     </Button>
   );
 };

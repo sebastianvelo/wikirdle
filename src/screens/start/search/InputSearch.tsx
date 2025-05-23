@@ -46,7 +46,7 @@ const InputSearch = (props: InputSearchProps) => {
 
   return (
     <div className="relative" ref={wrapperRef}>
-      <label className="block text-primary-900 dark:text-primary-300 font-bold mb-2">
+      <label className="block text-secondary-950 dark:text-secondary-200 font-bold mb-2">
         {t(props.title)}
       </label>
       <div className="relative">
@@ -55,7 +55,7 @@ const InputSearch = (props: InputSearchProps) => {
           value={props.value}
           onChange={handleChange}
           onClick={handleInputClick}
-          className="bg-primary-100/50 dark:bg-primary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-black placeholder-primary-800/60 dark:text-white dark:placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
+          className="bg-secondary-100/50 dark:bg-secondary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-black placeholder-primary-800/60 dark:text-white dark:placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
           placeholder={t(props.placeholder)}
         />
         <Icons.Search />

@@ -29,7 +29,7 @@ const CongratsScreen: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col min-h-screen w-full items-center justify-center">
+      <div className="flex-1 max-w-6xl w-full mx-auto lg:px-4 lg:py-8 flex flex-col justify-between lg:justify-center">
         <GlassCard className="lg:w-1/2 lg:mx-auto">
           <div className="p-8">
             <h1 className="text-4xl font-bold mb-6 text-center text-primary-600 dark:text-primary-400">{t(I18n.CONGRATS.TITLE)}</h1>
