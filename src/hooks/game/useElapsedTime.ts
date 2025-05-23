@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
  * Devuelve los segundos transcurridos desde `startTime`
  * y se actualiza cada segundo.
  */
-const useElapsedTime = (startTime: number | undefined): number => {
+const useElapsedTime = (startTime: number | undefined, timeInterval: number = 1000): number => {
     const [now, setNow] = useState(Date.now());
 
     useEffect(() => {
         if (!startTime) return;
-        const interval = setInterval(() => setNow(Date.now()), 1000);
+        const interval = setInterval(() => setNow(Date.now()), timeInterval);
         return () => clearInterval(interval);
     }, [startTime]);
 

@@ -56,7 +56,7 @@ export const wikiGameReducer = (state: WikiGameState, action: WikiGameAction): W
             };
 
         case WikiGameActionTypes.WIN_GAME:
-            const duration = state.gameStartTime ? (Date.now() - state.gameStartTime / 1000) : 0;
+            const duration = state.gameStartTime ? Math.floor((Date.now() - state.gameStartTime) / 1000) : 0;
             return {
                 ...state,
                 hasWon: true,

@@ -63,8 +63,8 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
 
   const startGame = async (startArticle: string, destination: string): Promise<void> => {
     dispatch(wikiGameActions.startGame(startArticle, destination));
-    navigate(ScreenPath.wiki(encodeURIComponent(startArticle), encodeURIComponent(destination)));
     await fetchArticleContent(startArticle);
+    navigate(ScreenPath.wiki(encodeURIComponent(startArticle), encodeURIComponent(destination)));
   };
 
   const handleLinkClick = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
