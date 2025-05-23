@@ -1,10 +1,10 @@
+import { ScreenPath } from "@common/utils/utils";
+import AppProvider from "@context/AppProvider";
+import Footer from "@layout/footer/Footer";
+import CongratsScreen from "@screens/congrats/CongratsScreen";
+import StartScreen from "@screens/start/StartScreen";
+import GameScreen from "@screens/wiki/GameScreen";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { ScreenPath } from "./common/utils/utils";
-import AppProvider from "./context/AppProvider";
-import Footer from "./layout/footer/Footer";
-import CongratsScreen from "./screens/congrats/CongratsScreen";
-import StartScreen from "./screens/start/StartScreen";
-import GameScreen from "./screens/wiki/GameScreen";
 import "./output.css";
 
 const App: React.FC = () => {
