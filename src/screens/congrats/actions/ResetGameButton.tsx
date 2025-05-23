@@ -1,13 +1,13 @@
 import Button from "@common/components/button/Button";
+import Icons from "@common/icons/Icons";
 import useWikiGame from "@hooks/game/useWikiGame";
-import { Home } from "lucide-react";
 
 const ResetGameButton: React.FC = () => {
   const { resetGame } = useWikiGame();
 
   return (
     <Button onClick={resetGame}>
-      <Home />
+      <Icons.Home />
     </Button>
   );
 };

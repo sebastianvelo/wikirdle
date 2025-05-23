@@ -1,13 +1,14 @@
-import { Moon, Sun } from "lucide-react";
+import RoundedButton from "@common/components/button/RoundedButton";
 import useDarkMode from "@hooks/app/useDarkMode";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggleButton: React.FC = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
 
     return (
-        <button onClick={toggleDarkMode} className="p-2 rounded-lg dark:text-white bg-secondary-300 dark:bg-secondary-800 hover:bg-secondary-300 dark:hover:bg-secondary-700 transition-colors focus:outline-none" aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
+        <RoundedButton variant="primary" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
             {darkMode ? <Sun /> : <Moon />}
-        </button>
+        </RoundedButton>
     );
 };
 

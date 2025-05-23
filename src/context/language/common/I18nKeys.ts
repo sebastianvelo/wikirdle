@@ -22,6 +22,11 @@ const I18n = {
             TIME: "game.stats.time",
             DESTINATION: "game.stats.destination",
             CLICKS: "game.stats.clicks"
+        },
+        ACTIONS: {
+            REPLAY: "game.actions.replay",
+            RESET: "game.actions.reset",
+            PATH: "game.actions.path"
         }
     },
     CONGRATS: {

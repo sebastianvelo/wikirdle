@@ -8,7 +8,7 @@ const Button: React.FC<ButtonProps> = ({ children, disabled = false, className =
     const { t } = useI18N();
 
     return (
-        <button className={`p-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors ${className}`} disabled={disabled} {...props}>
+        <button className={`p-2 bg-primary-500 hover:bg-primary-600 text-secondary-200 font-medium rounded-lg transition-colors ${className}`} disabled={disabled} {...props}>
             {typeof children === "string" ? t(children) : children}
         </button>
     );

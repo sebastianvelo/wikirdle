@@ -1,4 +1,7 @@
+import RoundedButton from "@common/components/button/RoundedButton";
 import Icons from "@common/icons/Icons";
+import I18n from "@context/language/common/I18nKeys";
+import useI18N from "@hooks/app/useI18N";
 import useWikiGame from "@hooks/game/useWikiGame";
 
 interface GameStatsProps {
@@ -6,25 +9,20 @@ interface GameStatsProps {
 }
 
 const GameActions: React.FC<GameStatsProps> = ({ toggleShowPath }) => {
-  const { replayGame } = useWikiGame();
+  const { t } = useI18N();
+  const { replayGame, resetGame } = useWikiGame();
 
   return (
     <div className="flex gap-2">
-      <button
-        onClick={toggleShowPath}
-        className="p-2 rounded-full bg-gray-100 hover:bg-primary-800/50 dark:bg-gray-800 dark:hover:bg-primary-700/60 dark:text-white transition-colors"
-        title="Ver ruta"
-      >
-        <Icons.Hamburger />
-      </button>
-
-      <button
-        onClick={replayGame}
-        className="p-2 rounded-full bg-gray-100 hover:bg-primary-800/50 dark:bg-gray-800 dark:hover:bg-primary-700/60 dark:text-white transition-colors"
-        title="Reiniciar juego"
-      >
+      <RoundedButton onClick={replayGame} title={t(I18n.GAME.ACTIONS.REPLAY)} variant="primary">
         <Icons.Reset />
-      </button>
+      </RoundedButton>
+      <RoundedButton onClick={resetGame} title={t(I18n.GAME.ACTIONS.RESET)} variant="primary">
+        <Icons.Home />
+      </RoundedButton>
+      <RoundedButton onClick={toggleShowPath} title={t(I18n.GAME.ACTIONS.PATH)} variant="primary">
+        <Icons.Hamburger />
+      </RoundedButton>
     </div>
   );
 };

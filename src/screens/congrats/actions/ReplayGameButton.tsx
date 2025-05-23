@@ -1,6 +1,5 @@
 import Button from "@common/components/button/Button";
 import Icons from "@common/icons/Icons";
-import I18n from "@context/language/common/I18nKeys";
 import useWikiGame from "@hooks/game/useWikiGame";
 
 const ReplayGameButton: React.FC = () => {
