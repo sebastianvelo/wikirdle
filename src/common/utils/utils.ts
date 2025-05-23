@@ -19,8 +19,9 @@ export const GameParams = {
 } as const;
 
 export const formatTime = (seconds: number): string => {
-  if (seconds < 60) return `${seconds} segundos`;
   const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${minutes} minuto${minutes > 1 ? "s" : ""} y ${remainingSeconds} segundo${remainingSeconds !== 1 ? "s" : ""}`;
+  const remainingSeconds = Math.floor(seconds % 60);
+  const microseconds = Math.floor((seconds % 1) * 1000000);
+  
+  return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 };

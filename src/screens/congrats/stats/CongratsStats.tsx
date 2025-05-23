@@ -1,26 +1,25 @@
 import GlassCard from "@common/components/glass-card/GlassCard";
+import LoadingSpin from "@common/components/loading/LoadingSpin";
 import { formatTime } from "@common/utils/utils";
 import I18n from "@context/language/common/I18nKeys";
 import useI18N from "@hooks/app/useI18N";
 import useWikiGame from "@hooks/game/useWikiGame";
 
 const CongratsStats: React.FC = () => {
-  const { t, p } = useI18N();
+  const { t, p, } = useI18N();
   const { state } = useWikiGame();
 
   const getPerformanceMessage = (): string => {
     const clickCount = state.clickCount;
-    if (clickCount <= 3) return "¡Impresionante! Eres un maestro de Wikipedia.";
-    if (clickCount <= 6) return "¡Excelente trabajo! Conoces bien tu camino.";
-    if (clickCount <= 10) return "¡Bien hecho! Tu conocimiento te llevó al destino.";
-    return "¡Lo lograste! Sigue practicando para mejorar tu puntuación.";
+    if (clickCount <= 3) return t(I18n.CONGRATS.STATS.PERFORMANCE.BEST);
+    if (clickCount <= 6) return t(I18n.CONGRATS.STATS.PERFORMANCE.GOOD);
+    if (clickCount <= 10) return t(I18n.CONGRATS.STATS.PERFORMANCE.NORMAL);
+    return t(I18n.CONGRATS.STATS.PERFORMANCE.DEFAULT);
   };
 
   if (state.gamePath.length === 0) {
     return (
-      <div className="bg-white text-gray-900 min-h-screen flex items-center justify-center dark:bg-gray-900 dark:text-white">
-        Cargando...
-      </div>
+      <LoadingSpin isLoading={true} />
     );
   }
 

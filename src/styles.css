@@ -16,12 +16,12 @@
 }
 
 .dark #wiki a {
-  color: #E26F00;
+  color: #e26f00;
 }
 
 .scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #d5e0ff #172554;
+  scrollbar-color: #64748b #0f172a;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -30,11 +30,16 @@
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background-color: #08153f;
+  background-color: #020617;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #cedbff;
+  background-color: #64748b;
+  border-radius: 0.125rem;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #475569;
 }
 
 .wiki-custom-styles {
