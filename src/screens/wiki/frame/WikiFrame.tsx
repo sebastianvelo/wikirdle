@@ -1,4 +1,4 @@
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 const WikiFrame: React.FC = () => {
   const { state, handleLinkClick } = useWikiGame();

@@ -1,6 +1,6 @@
-import GlassCard from "../../../common/components/glass-card/GlassCard";
-import { formatTime } from "../../../common/utils/utils";
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import GlassCard from "@common/components/glass-card/GlassCard";
+import { formatTime } from "@common/utils/utils";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 const CongratsStats: React.FC = () => {
   const { state } = useWikiGame();

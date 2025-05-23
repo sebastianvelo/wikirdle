@@ -1,8 +1,8 @@
-import Select from "../../../common/components/select/Select";
+import Select from "@common/components/select/Select";
 import { Locale } from "../../../context/language/types/types";
-import useIsMobile from "../../../hooks/app/useIsMobile";
-import useLanguage from "../../../hooks/app/useLanguage";
-import { SelectOption } from "../../../hooks/components/useSelectInput";
+import useIsMobile from "@hooks/app/useIsMobile";
+import useLanguage from "@hooks/app/useLanguage";
+import { SelectOption } from "@hooks/components/useSelectInput";
 
 const LanguageSelector: React.FC = () => {
     const isMobile = useIsMobile();

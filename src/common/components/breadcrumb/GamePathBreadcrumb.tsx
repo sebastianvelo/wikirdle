@@ -1,4 +1,4 @@
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import useWikiGame from "@hooks/game/useWikiGame";
 import BreadcrumbItem from "./BreadcrumbItem";
 
 const GamePathBreadcrumb: React.FC = () => {

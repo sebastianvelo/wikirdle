@@ -1,4 +1,4 @@
-import Icons from "../../../common/icons/Icons";
+import Icons from "@common/icons/Icons";
 
 interface SocialIconProps {
     icon: string

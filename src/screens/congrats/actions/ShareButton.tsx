@@ -1,6 +1,6 @@
-import Button from "../../../common/components/button/Button";
-import { formatTime } from "../../../common/utils/utils";
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import Button from "@common/components/button/Button";
+import { formatTime } from "@common/utils/utils";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 const ShareButton: React.FC = () => {
   const { state } = useWikiGame();

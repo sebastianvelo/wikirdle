@@ -1,4 +1,4 @@
-import useSelectInput, { SelectOption } from "../../../hooks/components/useSelectInput";
+import useSelectInput, { SelectOption } from "@hooks/components/useSelectInput";
 import Icons, { ChevronDirection } from "../../icons/Icons";
 
 interface SelectProps {

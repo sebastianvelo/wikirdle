@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ScreenPath } from "../../common/utils/utils";
+import { ScreenPath } from "@common/utils/utils";
 import { getWikipediaMobileHtml } from "../../wikipedia/WikiService";
 import { WikiGameContextType } from "./types";
 import { wikiGameActions } from "./WikiGameActions";

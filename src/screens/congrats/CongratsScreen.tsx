@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import GlassCard from "../../common/components/glass-card/GlassCard";
-import { ScreenPath } from "../../common/utils/utils";
-import useWikiGame from "../../hooks/game/useWikiGame";
+import GlassCard from "@common/components/glass-card/GlassCard";
+import { ScreenPath } from "@common/utils/utils";
+import useWikiGame from "@hooks/game/useWikiGame";
 import Header from "../../layout/header/Header";
 import CongratsGamePath from "./game-path/CongratsGamePath";
 import CongratsStats from "./stats/CongratsStats";

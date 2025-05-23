@@ -1,4 +1,4 @@
-import Brand from "../../common/components/brand/Brand";
+import Brand from "@common/components/brand/Brand";
 import LanguageSelector from "./actions/LanguageSelector";
 import ThemeToggleButton from "./actions/ThemeToggleButton";
 

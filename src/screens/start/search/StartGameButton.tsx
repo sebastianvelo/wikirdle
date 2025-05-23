@@ -1,4 +1,4 @@
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 interface StartGameButtonProps {
   startArticle: string;

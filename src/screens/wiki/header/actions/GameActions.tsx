@@ -1,5 +1,5 @@
-import Icons from "../../../../common/icons/Icons";
-import useWikiGame from "../../../../hooks/game/useWikiGame";
+import Icons from "@common/icons/Icons";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 interface GameStatsProps {
   toggleShowPath: () => void;

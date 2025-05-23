@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import Icons from "../../../common/icons/Icons";
-import useClickOutside from "../../../hooks/app/useClickOutside";
+import Icons from "@common/icons/Icons";
+import useClickOutside from "@hooks/app/useClickOutside";
 import { searchWikipediaArticles } from "../../../wikipedia/WikiService";
 import SuggestionsList from "./SuggestionsList";
 

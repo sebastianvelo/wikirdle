@@ -1,6 +1,6 @@
-import { formatTime } from "../../../../common/utils/utils";
-import useElapsedTime from "../../../../hooks/game/useElapsedTime";
-import useWikiGame from "../../../../hooks/game/useWikiGame";
+import { formatTime } from "@common/utils/utils";
+import useElapsedTime from "@hooks/game/useElapsedTime";
+import useWikiGame from "@hooks/game/useWikiGame";
 import GameStat from "./GameStat";
 
 const GameStats: React.FC = () => {

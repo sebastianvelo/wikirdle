@@ -1,5 +1,5 @@
-import Button from "../../../common/components/button/Button";
-import useWikiGame from "../../../hooks/game/useWikiGame";
+import Button from "@common/components/button/Button";
+import useWikiGame from "@hooks/game/useWikiGame";
 
 const PlayAgainButton: React.FC = () => {
   const { replayGame } = useWikiGame();

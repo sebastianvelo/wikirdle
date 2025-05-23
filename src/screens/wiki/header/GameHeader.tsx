@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GamePathBreadcrumb from "../../../common/components/breadcrumb/GamePathBreadcrumb";
+import GamePathBreadcrumb from "@common/components/breadcrumb/GamePathBreadcrumb";
 import GameActions from "./actions/GameActions";
 import GameStats from "./stats/GameStats";
 

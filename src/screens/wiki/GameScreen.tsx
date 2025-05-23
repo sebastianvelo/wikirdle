@@ -1,5 +1,5 @@
-import LoadingSpin from "../../common/components/loading/LoadingSpin";
-import useWikiGame from "../../hooks/game/useWikiGame";
+import LoadingSpin from "@common/components/loading/LoadingSpin";
+import useWikiGame from "@hooks/game/useWikiGame";
 import Header from "../../layout/header/Header";
 import WikiFrame from "./frame/WikiFrame";
 import GameHeader from "./header/GameHeader";
