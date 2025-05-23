@@ -7,7 +7,7 @@ const GameHeader: React.FC = () => {
     const [showGamePath, setShowGamePath] = useState(false);
 
     return (
-        <header className="bg-white/80 dark:bg-black/40 backdrop-blur-sm p-2">
+        <header className="bg-white/80 dark:bg-black/40 backdrop-blur-sm shadow-xl">
             <div className="max-w-7xl mx-auto px-4 py-3">
                 <div className="flex flex-wrap items-center justify-between gap-6 w-full">
                     <GameStats />

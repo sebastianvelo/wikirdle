@@ -55,7 +55,7 @@ const InputSearch = (props: InputSearchProps) => {
           value={props.value}
           onChange={handleChange}
           onClick={handleInputClick}
-          className="bg-secondary-100/50 dark:bg-secondary-950/50 border border-primary-800/50 rounded-lg w-full p-4 text-black placeholder-primary-800/60 dark:text-white dark:placeholder-primary-300/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
+          className="bg-secondary-100/50 dark:bg-secondary-950/50 border border-primary-800/50 dark:border-primary-500/60 rounded-lg w-full p-4 text-black placeholder-primary-800/60 dark:text-white dark:placeholder-primary-300/60 focus:border-primary-800/20 focus:outline-none focus:ring-2 focus:ring-primary-800/40"
           placeholder={t(props.placeholder)}
         />
         <Icons.Search />

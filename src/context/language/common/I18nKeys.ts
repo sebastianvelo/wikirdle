@@ -28,8 +28,12 @@ const I18n = {
         TITLE: "congrats.title",
         REPLAY_BUTTON: "congrats.replay.button",
         RESET_BUTTON: "congrats.reset.button",
-        SHARE_BUTTON: "congrats.share.button",
-        SHARE_CONTENT: "congrats.share.content",
+        SHARE: {
+            BUTTON: "congrats.share.button",
+            CONTENT: "congrats.share.content",
+            SUCCESS: "congrats.share.success",
+            ERROR: "congrats.share.error"
+        },
         GAME_PATH_TITLE: "congrats.gamePath.title",
         STATS: {
             TITLE: "congrats.stats.title",
