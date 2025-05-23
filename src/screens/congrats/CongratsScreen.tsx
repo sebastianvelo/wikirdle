@@ -4,8 +4,8 @@ import GlassCard from "../../common/components/glass-card/GlassCard";
 import { ScreenPath } from "../../common/utils/utils";
 import useWikiGame from "../../hooks/game/useWikiGame";
 import Header from "../../layout/header/Header";
-import CongratsGamePath from "./CongratsGamePath";
-import CongratsStats from "./CongratsStats";
+import CongratsGamePath from "./game-path/CongratsGamePath";
+import CongratsStats from "./stats/CongratsStats";
 import CongratsActions from "./actions/CongratsActions";
 
 const CongratsScreen: React.FC = () => {
