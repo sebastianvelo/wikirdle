@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@common/*": [
+                "common/*"
+            ],
+            "@context/*": [
+                "context/*"
+            ],
+            "@hooks/*": [
+                "hooks/*"
+            ],
+            "@layout/*": [
+                "layout/*"
+            ],
+            "@locales/*": [
+                "locales/*"
+            ],
+            "@screens/*": [
+                "screens/*"
+            ],
+            "@wikipedia/*": [
+                "wikipedia/*"
+            ]
+        }
+    }
+}
