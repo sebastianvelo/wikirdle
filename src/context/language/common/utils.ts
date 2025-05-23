@@ -22,3 +22,21 @@ export const getInitialLanguage = (defLang?: Locale): Locale => {
     }
     return getBrowserLanguage();
 };
+
+/**
+ * Reemplaza placeholders numéricos en un template por los valores de un array.
+ * Sólo reconoce índices enteros >= 0.
+ *
+ * @param template - Cadena con placeholders como "{0}", "{1}", ...
+ * @param data - Array cuyos elementos serán usados para sustituir.
+ * @returns Cadena con los placeholders reemplazados.
+ */
+export const replacePlaceholders = (template: string, data: Array<string | number>): string => {
+    return template.replace(/\{(\d+)\}/g, (match, group) => {
+        const idx = Number(group);
+        // Si existe el elemento en data, lo convierte a string; si no, devuelve el placeholder original.
+        return idx < data.length && data[idx] !== undefined
+            ? String(data[idx])
+            : match;
+    });
+};

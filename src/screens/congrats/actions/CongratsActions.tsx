@@ -1,4 +1,4 @@
-import PlayAgainButton from "./PlayAgainButton";
+import ReplayGameButton from "./ReplayGameButton";
 import ResetGameButton from "./ResetGameButton";
 import ShareButton from "./ShareButton";
 
@@ -7,7 +7,7 @@ const CongratsActions: React.FC = () => {
     <>
       <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-end pt-4">
         <ResetGameButton />
-        <PlayAgainButton />
+        <ReplayGameButton />
         <ShareButton />
       </div>
     </>
