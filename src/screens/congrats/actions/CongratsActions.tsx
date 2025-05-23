@@ -1,4 +1,3 @@
-import React from "react";
 import PlayAgainButton from "./PlayAgainButton";
 import ResetGameButton from "./ResetGameButton";
 import ShareButton from "./ShareButton";

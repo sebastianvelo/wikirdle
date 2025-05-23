@@ -1,4 +1,3 @@
-import React from "react";
 import useSelectInput, { SelectOption } from "../../../hooks/components/useSelectInput";
 import Icons, { ChevronDirection } from "../../icons/Icons";
 

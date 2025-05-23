@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GlassCard from "../../common/components/glass-card/GlassCard";
 import { ScreenPath } from "../../common/utils/utils";

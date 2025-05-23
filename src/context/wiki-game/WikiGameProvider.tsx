@@ -7,13 +7,17 @@ import { wikiGameActions } from "./WikiGameActions";
 import WikiGameContext from "./WikiGameContext";
 import { initialState, wikiGameReducer } from "./WikiGameReducer";
 
-const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface WikiGameProviderProps { 
+  children: React.ReactNode 
+}
+
+const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(wikiGameReducer, initialState);
   const navigate = useNavigate();
   const location = useLocation();
 
   const normalizeArticleName = (articleName: string): string => {
-    return articleName.trim().replace(/_/g, ' ');
+    return articleName.trim().replace(/_/g, " ");
   };
 
   const extractArticleFromAnchor = (anchor: HTMLAnchorElement): string => {
@@ -24,8 +28,8 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
   const stripSupTags = (html: string): string => {
     const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    doc.querySelectorAll('sup').forEach(el => el.remove());
+    const doc = parser.parseFromString(html, "text/html");
+    doc.querySelectorAll("sup").forEach(el => el.remove());
     return doc.body.innerHTML;
   }
 
@@ -51,7 +55,7 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
       const processedContent = htmlContent.replace("<base ", "<base-dis ");
       dispatch(wikiGameActions.setContent(stripSupTags(processedContent), normalizeArticleName(articleTitle)));
     } catch (error) {
-      console.error('Error fetching article:', error);
+      console.error("Error fetching article:", error);
       dispatch(wikiGameActions.setError(`Error al cargar el artículo: ${articleTitle}`));
       navigate(ScreenPath.home);
     }
@@ -68,7 +72,7 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
     event.stopPropagation();
 
     const target = event.target as HTMLElement;
-    const anchor = target.closest('a');
+    const anchor = target.closest("a");
 
     if (!anchor) {
       return;
@@ -78,7 +82,7 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
       const clickedArticle = extractArticleFromAnchor(anchor);
 
       if (!clickedArticle) {
-        console.warn('No se pudo extraer el nombre del artículo');
+        console.warn("No se pudo extraer el nombre del artículo");
         return;
       }
 
@@ -87,8 +91,8 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
       await fetchArticleContent(clickedArticle);
 
     } catch (error) {
-      console.error('Error handling link click:', error);
-      dispatch(wikiGameActions.setError('Error al procesar el enlace clicado'));
+      console.error("Error handling link click:", error);
+      dispatch(wikiGameActions.setError("Error al procesar el enlace clicado"));
     }
   };
 
@@ -99,7 +103,7 @@ const WikiGameProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
   const replayGame = async (): Promise<void> => {
     if (!state.lastGameConfig) {
-      console.warn('No hay configuración de juego anterior para repetir');
+      console.warn("No hay configuración de juego anterior para repetir");
       navigate(ScreenPath.home);
       return;
     }

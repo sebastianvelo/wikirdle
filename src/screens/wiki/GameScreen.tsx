@@ -1,4 +1,3 @@
-import React from "react";
 import LoadingSpin from "../../common/components/loading/LoadingSpin";
 import useWikiGame from "../../hooks/game/useWikiGame";
 import Header from "../../layout/header/Header";

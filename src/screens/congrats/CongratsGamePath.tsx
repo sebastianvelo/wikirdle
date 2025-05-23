@@ -1,4 +1,3 @@
-import React from "react";
 import GamePathBreadcrumb from "../../common/components/breadcrumb/GamePathBreadcrumb";
 
 const CongratsGamePath: React.FC = () => {

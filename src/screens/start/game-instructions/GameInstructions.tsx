@@ -1,4 +1,3 @@
-import React from "react";
 import GlassCard from "../../../common/components/glass-card/GlassCard";
 import InstructionItem from '../../../common/components/instruction-item/InstructionItem';
 

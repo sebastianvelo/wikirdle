@@ -17,7 +17,7 @@ const StartGameButton: React.FC<StartGameButtonProps> = ({ startArticle, destina
     <button
       onClick={handleStartGame}
       disabled={!origin || !destination}
-      className="w-full bg-gradient-to-r from-primary-600 to-primary-800 hover:from-primary-700 hover:to-primary-900 text-white font-bold py-4 px-6 rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 mt-4 text-lg"
+      className="w-full bg-gradient-to-r from-primary-600 to-primary-800 hover:from-primary-700 hover:to-primary-900 text-white font-bold py-4 px-6 rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 mt-4 text-lg"
     >
       Jugar
     </button>

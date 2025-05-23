@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import GlassCard from "../../../common/components/glass-card/GlassCard";
 import InputSearch from "./InputSearch";
 import StartGameButton from "./StartGameButton";

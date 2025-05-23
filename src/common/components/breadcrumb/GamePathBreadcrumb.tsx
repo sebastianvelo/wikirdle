@@ -1,4 +1,3 @@
-import React from "react";
 import useWikiGame from "../../../hooks/game/useWikiGame";
 import BreadcrumbItem from "./BreadcrumbItem";
 

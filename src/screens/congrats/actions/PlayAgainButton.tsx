@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../../../common/components/button/Button";
 import useWikiGame from "../../../hooks/game/useWikiGame";
 
