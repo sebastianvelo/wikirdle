@@ -26,12 +26,15 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
     return normalizeArticleName(clickedArticle);
   };
 
-  const stripSupTags = (html: string): string => {
+  const stripTags = (html: string): string => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    doc.querySelectorAll("sup").forEach(el => el.remove());
+    const tagsToRemove = ["sup", "figure"];
+    tagsToRemove.forEach(tag => {
+      doc.querySelectorAll(tag).forEach(el => el.remove());
+    });
     return doc.body.innerHTML;
-  }
+  };
 
   const fetchArticleContent = async (articleTitle: string): Promise<void> => {
     const normalizedDestination = normalizeArticleName(state.destination);
@@ -53,7 +56,7 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
       }
 
       const processedContent = htmlContent.replace("<base ", "<base-dis ");
-      dispatch(wikiGameActions.setContent(stripSupTags(processedContent), normalizeArticleName(articleTitle)));
+      dispatch(wikiGameActions.setContent(stripTags(processedContent), normalizeArticleName(articleTitle)));
     } catch (error) {
       console.error("Error fetching article:", error);
       dispatch(wikiGameActions.setError(`Error al cargar el artículo: ${articleTitle}`));
