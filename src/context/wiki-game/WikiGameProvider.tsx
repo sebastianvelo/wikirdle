@@ -1,40 +1,21 @@
+import { ScreenPath } from "@common/utils/utils";
 import { useEffect, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ScreenPath } from "@common/utils/utils";
 import { getWikipediaMobileHtml } from "../../wikipedia/WikiService";
 import { WikiGameContextType } from "./types";
-import { wikiGameActions } from "./WikiGameActions";
-import WikiGameContext from "./WikiGameContext";
-import { initialState, wikiGameReducer } from "./WikiGameReducer";
+import { extractArticleFromAnchor, normalizeArticleName, stripTags } from "./utils";
+import { wikiGameActions } from "./wikiGameActions";
+import WikiGameContext from "./wikiGameContext";
+import { initialState, wikiGameReducer } from "./wikiGameReducer";
 
-interface WikiGameProviderProps { 
-  children: React.ReactNode 
+interface WikiGameProviderProps {
+  children: React.ReactNode
 }
 
 const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(wikiGameReducer, initialState);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const normalizeArticleName = (articleName: string): string => {
-    return articleName.trim().replace(/_/g, " ");
-  };
-
-  const extractArticleFromAnchor = (anchor: HTMLAnchorElement): string => {
-    const url = new URL(anchor.href);
-    const clickedArticle = decodeURIComponent(url.pathname.split("/").pop() ?? "");
-    return normalizeArticleName(clickedArticle);
-  };
-
-  const stripTags = (html: string): string => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const tagsToRemove = ["sup", "figure"];
-    tagsToRemove.forEach(tag => {
-      doc.querySelectorAll(tag).forEach(el => el.remove());
-    });
-    return doc.body.innerHTML;
-  };
 
   const fetchArticleContent = async (articleTitle: string): Promise<void> => {
     const normalizedDestination = normalizeArticleName(state.destination);

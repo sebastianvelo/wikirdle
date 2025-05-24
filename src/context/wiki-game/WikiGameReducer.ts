@@ -1,5 +1,5 @@
 import { WikiGameState } from "./types";
-import { WikiGameAction, WikiGameActionTypes } from "./WikiGameActions";
+import { WikiGameAction, WikiGameActionTypes } from "./wikiGameActions";
 
 export const initialState: WikiGameState = {
     isLoading: false,
