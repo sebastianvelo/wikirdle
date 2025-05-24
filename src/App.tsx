@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <ToastProvider>
-        <div className="h-screen overflow-hidden lg:h-auto lg:min-h-screen bg-gradient-to-t from-primary-100 via-white to-primary-100 dark:from-primary-950 dark:to-black flex flex-col">
+        <div className="h-screen overflow-hidden lg:h-auto lg:min-h-screen bg-gradient-to-b from-primary-100 to-white dark:from-primary-950 dark:to-black flex flex-col">
           <Router>
             <WikiGameProvider>
               <Routes>

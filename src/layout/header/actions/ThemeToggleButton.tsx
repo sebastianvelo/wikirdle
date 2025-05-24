@@ -6,7 +6,7 @@ const ThemeToggleButton: React.FC = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
 
     return (
-        <RoundedButton variant="primary" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
+        <RoundedButton variant="accent" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
             {darkMode ? <Sun /> : <Moon />}
         </RoundedButton>
     );
