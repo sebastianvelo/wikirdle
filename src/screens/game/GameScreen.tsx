@@ -9,7 +9,7 @@ const GameScreen: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header showLangSelector={false} />
       <main className="flex-1 flex flex-col relative overflow-hidden min-h-screen pb-32 md:pb-0">
         <GameHeader />
         <WikiFrame />

@@ -1,12 +1,13 @@
 import { ScreenPath } from "@common/utils/utils";
+import { Locale } from "@context/language/types/types";
 import { useEffect, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getWikipediaMobileHtml } from "../../wikipedia/WikiService";
 import { WikiGameContextType } from "./types";
 import { extractArticleFromAnchor, normalizeArticleName, stripTags } from "./utils";
-import { wikiGameActions } from "./wikiGameActions";
-import WikiGameContext from "./wikiGameContext";
-import { initialState, wikiGameReducer } from "./wikiGameReducer";
+import { wikiGameActions } from "./WikiGameActions";
+import WikiGameContext from "./WikiGameContext";
+import { initialState, wikiGameReducer } from "./WikiGameReducer";
+import { getWikipediaMobileHtml } from "./wikiService";
 
 interface WikiGameProviderProps {
   children: React.ReactNode
@@ -17,7 +18,7 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const fetchArticleContent = async (articleTitle: string): Promise<void> => {
+  const fetchArticleContent = async (articleTitle: string, lang = state.lang): Promise<void> => {
     const normalizedDestination = normalizeArticleName(state.destination);
     const normalizedClicked = normalizeArticleName(articleTitle);
 
@@ -30,7 +31,7 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
     dispatch(wikiGameActions.setLoading(true));
 
     try {
-      const htmlContent = await getWikipediaMobileHtml(articleTitle);
+      const htmlContent = await getWikipediaMobileHtml(articleTitle, lang);
 
       if (!htmlContent) {
         throw new Error(`No se pudo cargar el artículo: ${articleTitle}`);
@@ -45,10 +46,10 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
     }
   };
 
-  const startGame = async (startArticle: string, destination: string): Promise<void> => {
-    dispatch(wikiGameActions.startGame(startArticle, destination));
-    await fetchArticleContent(startArticle);
-    navigate(ScreenPath.wiki(encodeURIComponent(startArticle), encodeURIComponent(destination)));
+  const startGame = async (startArticle: string, destination: string, lang: Locale): Promise<void> => {
+    dispatch(wikiGameActions.startGame(startArticle, destination, lang));
+    await fetchArticleContent(startArticle, lang);
+    navigate(ScreenPath.wiki(encodeURIComponent(startArticle), encodeURIComponent(destination), lang));
   };
 
   const handleLinkClick = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
@@ -92,8 +93,8 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
       return;
     }
 
-    const { startArticle, destination } = state.lastGameConfig;
-    await startGame(startArticle, destination);
+    const { startArticle, destination, lang } = state.lastGameConfig;
+    await startGame(startArticle, destination, lang);
   };
 
   const clearError = (): void => {
@@ -102,15 +103,15 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const path = location.pathname;
-    const gameRouteMatch = path.match(/^\/wiki\/(.+)\/to\/(.+)$/);
+    const gameRouteMatch = path.match(/^\/wiki\/([^\/]+)\/(.+)\/to\/(.+)$/);
 
     if (gameRouteMatch) {
-      const [, startArticle, endArticle] = gameRouteMatch;
+      const [, lang, startArticle, endArticle] = gameRouteMatch as [string, Locale, string, string];
       const decodedStart = decodeURIComponent(startArticle);
       const decodedEnd = decodeURIComponent(endArticle);
 
       if (!state.htmlContent && !state.isLoading && !state.error) {
-        dispatch(wikiGameActions.startGame(decodedStart, decodedEnd));
+        dispatch(wikiGameActions.startGame(decodedStart, decodedEnd, lang));
         fetchArticleContent(decodedStart);
       }
     }

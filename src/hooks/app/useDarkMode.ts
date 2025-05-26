@@ -1,4 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const ThemeLS = "theme";
+
+const getInitialTheme = (): boolean => {
+    const storedPreference = localStorage.getItem(ThemeLS);
+    if (storedPreference !== null) {
+        return storedPreference === "dark";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
 
 type UseDarkMode = {
     darkMode: boolean;
@@ -6,27 +16,16 @@ type UseDarkMode = {
 };
 
 const useDarkMode = (): UseDarkMode => {
-    const getInitialTheme = (): boolean => {
-        const storedPreference = localStorage.getItem("theme");
-        if (storedPreference !== null) {
-            return storedPreference === "dark";
-        }
-        return window.matchMedia("(prefers-color-scheme: dark)").matches;
-    };
-
     const [darkMode, setDarkMode] = useState<boolean>(getInitialTheme);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
         const handleChange = (event: MediaQueryListEvent) => {
-            if (localStorage.getItem("theme") === null) {
+            if (localStorage.getItem(ThemeLS) === null) {
                 setDarkMode(event.matches);
             }
         };
-
         mediaQuery.addEventListener("change", handleChange);
-
         return () => {
             mediaQuery.removeEventListener("change", handleChange);
         };
@@ -34,7 +33,7 @@ const useDarkMode = (): UseDarkMode => {
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", darkMode);
-        localStorage.setItem("theme", darkMode ? "dark" : "light");
+        localStorage.setItem(ThemeLS, darkMode ? "dark" : "light");
     }, [darkMode]);
 
     const toggleDarkMode = () => {

@@ -1,5 +1,6 @@
 import I18n from "@context/language/common/I18nKeys";
 import useI18N from "@hooks/app/useI18N";
+import useLanguage from "@hooks/app/useLanguage";
 import useWikiGame from "@hooks/game/useWikiGame";
 
 interface StartGameButtonProps {
@@ -10,10 +11,11 @@ interface StartGameButtonProps {
 const StartGameButton: React.FC<StartGameButtonProps> = ({ startArticle, destination }) => {
   const { t } = useI18N();
   const { startGame } = useWikiGame();
+  const { lang } = useLanguage();
 
   const handleStartGame = () => {
     if (!startArticle || !destination) return;
-    startGame(startArticle, destination);
+    startGame(startArticle, destination, lang);
   };
 
   return (

@@ -1,3 +1,5 @@
+import { Locale } from "@context/language/types/types";
+
 export enum WikiGameActionTypes {
     SET_LOADING = "SET_LOADING",
     START_GAME = "START_GAME",
@@ -11,7 +13,7 @@ export enum WikiGameActionTypes {
 
 export type WikiGameAction =
     | { type: WikiGameActionTypes.SET_LOADING; payload: boolean }
-    | { type: WikiGameActionTypes.START_GAME; payload: { startArticle: string; destination: string } }
+    | { type: WikiGameActionTypes.START_GAME; payload: { startArticle: string; destination: string, lang: Locale } }
     | { type: WikiGameActionTypes.SET_CONTENT; payload: { htmlContent: string; currentArticle: string } }
     | { type: WikiGameActionTypes.HANDLE_CLICK; payload: string }
     | { type: WikiGameActionTypes.WIN_GAME }
@@ -25,9 +27,9 @@ export const wikiGameActions = {
         payload: isLoading,
     }),
 
-    startGame: (startArticle: string, destination: string): WikiGameAction => ({
+    startGame: (startArticle: string, destination: string, lang: Locale): WikiGameAction => ({
         type: WikiGameActionTypes.START_GAME,
-        payload: { startArticle, destination },
+        payload: { startArticle, destination, lang },
     }),
 
     setContent: (htmlContent: string, currentArticle: string): WikiGameAction => ({

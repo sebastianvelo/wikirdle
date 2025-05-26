@@ -1,8 +1,8 @@
 import Icons from "@common/icons/Icons";
 import useClickOutside from "@hooks/app/useClickOutside";
 import useI18N from "@hooks/app/useI18N";
-import { useRef, useState } from "react";
-import { searchWikipediaArticles } from "../../../wikipedia/WikiService";
+import useWikiSearch from "@hooks/game/useWikiSearch";
+import { useEffect, useRef, useState } from "react";
 import SuggestionsList from "./SuggestionsList";
 
 interface InputSearchProps {
@@ -14,23 +14,17 @@ interface InputSearchProps {
 
 const InputSearch = (props: InputSearchProps) => {
   const { t } = useI18N();
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const { suggestions, error, searchArticles, clearError } = useWikiSearch();
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(wrapperRef, () => setShowSuggestions(false));
 
   const handleSearch = async (query: string) => {
-    if (query.length < 3) return;
-    try {
-      const results = await searchWikipediaArticles(query);
-      setSuggestions(results);
-    } catch (error) {
-      console.error(error);
-    }
+    await searchArticles(query);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.changeValue(e.target.value);
     handleSearch(e.target.value);
   };
@@ -42,11 +36,24 @@ const InputSearch = (props: InputSearchProps) => {
 
   const handleInputClick = () => {
     setShowSuggestions(true);
+    if (error) {
+      clearError();
+    }
   };
+
+  const handleInputFocus = () => {
+    setShowSuggestions(true);
+  };
+
+  useEffect(() => {
+    if (suggestions.length > 0) {
+      setShowSuggestions(true);
+    }
+  }, [suggestions]);
 
   return (
     <div className="relative" ref={wrapperRef}>
-      <label className="block text-secondary-950 dark:text-secondary-200 font-bold mb-2">
+      <label className="block text-primary-900/90 dark:text-secondary-200 font-bold mb-2">
         {t(props.title)}
       </label>
       <div className="relative">

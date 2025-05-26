@@ -1,5 +1,5 @@
 import { WikiGameState } from "./types";
-import { WikiGameAction, WikiGameActionTypes } from "./wikiGameActions";
+import { WikiGameAction, WikiGameActionTypes } from "./WikiGameActions";
 
 export const initialState: WikiGameState = {
     isLoading: false,
@@ -13,6 +13,7 @@ export const initialState: WikiGameState = {
     hasWon: false,
     error: null,
     lastGameConfig: null,
+    lang: undefined
 };
 
 export const wikiGameReducer = (state: WikiGameState, action: WikiGameAction): WikiGameState => {
@@ -31,9 +32,11 @@ export const wikiGameReducer = (state: WikiGameState, action: WikiGameAction): W
                 gameDuration: null,
                 hasWon: false,
                 error: null,
+                lang: action.payload.lang,
                 lastGameConfig: {
                     startArticle: action.payload.startArticle,
                     destination: action.payload.destination,
+                    lang: action.payload.lang
                 },
             };
 
@@ -79,6 +82,7 @@ export const wikiGameReducer = (state: WikiGameState, action: WikiGameAction): W
         case WikiGameActionTypes.RESET_GAME:
             return {
                 ...initialState,
+                lang: state.lastGameConfig?.lang,
                 lastGameConfig: state.lastGameConfig,
             };
 
