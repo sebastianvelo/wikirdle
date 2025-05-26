@@ -1,10 +1,10 @@
 import Button from "@common/components/button/Button";
+import Icons from "@common/icons/Icons";
 import { formatTime } from "@common/utils/utils";
 import I18n from "@context/language/common/I18nKeys";
 import useI18N from "@hooks/app/useI18N";
 import useToast from "@hooks/components/useToast";
 import useWikiGame from "@hooks/game/useWikiGame";
-import { Share2 } from "lucide-react";
 
 const ShareButton: React.FC = () => {
   const { p } = useI18N();
@@ -20,7 +20,7 @@ const ShareButton: React.FC = () => {
 
   return (
     <Button onClick={copyInClipboard}>
-      <Share2 />
+      <Icons.Share />
     </Button>
   );
 };

@@ -31,13 +31,13 @@ const useWikiSearch = (minQueryLength: number = 3): UseWikipediaSearchReturn => 
             const results = await searchWikipediaArticles(query, lang);
             setSuggestions(results);
         } catch (err) {
-            console.error('Error searching Wikipedia articles:', err);
-            setError('Error al buscar artículos. Por favor, intenta de nuevo.');
+            console.error("Error searching Wikipedia articles:", err);
+            setError("Error al buscar artículos. Por favor, intenta de nuevo.");
             setSuggestions([]);
         } finally {
             setIsLoading(false);
         }
-    }, [minQueryLength]);
+    }, [minQueryLength, lang]);
 
     const clearSuggestions = useCallback(() => {
         setSuggestions([]);
