@@ -5,10 +5,7 @@ import { useEffect, RefObject } from "react";
  * @param ref - Referencia al elemento que queremos monitorear
  * @param callback - Función que se ejecutará cuando se detecte un clic fuera
  */
-const useClickOutside = <T extends HTMLElement = HTMLElement>(
-    ref: RefObject<T | null>,
-    callback: () => void
-) => {
+const useClickOutside = <T extends HTMLElement = HTMLElement>(ref: RefObject<T>, callback: () => void) => {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (ref.current && !ref.current.contains(event.target as Node)) {
