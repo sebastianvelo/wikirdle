@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/sebastianvelo/wikirdle)
+
 # Wikirdle
 
 Wikirdle is a fun and challenging game where the goal is to navigate from one Wikipedia article to another in as few clicks as possible. Built with **React**, **TypeScript**, and styled with **Tailwind CSS**, it offers a modern and responsive experience.
