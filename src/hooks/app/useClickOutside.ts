@@ -6,7 +6,7 @@ import { useEffect, RefObject } from "react";
  * @param callback - Función que se ejecutará cuando se detecte un clic fuera
  */
 const useClickOutside = <T extends HTMLElement = HTMLElement>(
-    ref: RefObject<T>,
+    ref: RefObject<T | null>,
     callback: () => void
 ) => {
     useEffect(() => {
