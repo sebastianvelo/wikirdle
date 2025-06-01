@@ -12,6 +12,8 @@ const SocialIcon: React.FC<SocialIconProps> = ({ icon }) => {
             return <Icons.Github />;
         case "mail":
             return <Icons.Mail />;
+        case "portfolio":
+            return <Icons.Globe />;
         default:
             return null;
     }

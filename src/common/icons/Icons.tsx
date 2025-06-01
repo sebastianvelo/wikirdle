@@ -1,4 +1,4 @@
-import { Home, Moon, Share2, Sun } from "lucide-react";
+import { Globe, Home, Moon, Share2, Sun } from "lucide-react";
 
 export enum ChevronDirection {
     UP = "",
@@ -61,7 +61,8 @@ const Icons = {
     Moon: Moon,
     Sun: Sun,
     Home: Home,
-    Share: Share2
+    Share: Share2,
+    Globe: Globe
 };
 
 export default Icons;
