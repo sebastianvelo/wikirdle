@@ -1,13 +1,14 @@
 import { ScreenPath } from "@common/utils/utils";
 import LanguageProvider from "@context/language/LanguageProvider";
+import ToastProvider from "@context/toast/ToastProvider";
 import WikiGameProvider from "@context/wiki-game/WikiGameProvider";
 import Footer from "@layout/footer/Footer";
 import CongratsScreen from "@screens/congrats/CongratsScreen";
 import GameScreen from "@screens/game/GameScreen";
+import PrivacyPolicyScreen from "@screens/privacy-policy/PrivacyPolicyScreen";
 import StartScreen from "@screens/start/StartScreen";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./output.css";
-import ToastProvider from "@context/toast/ToastProvider";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
                 <Route path={ScreenPath.home} element={<StartScreen />} />
                 <Route path={ScreenPath.wikiPattern} element={<GameScreen />} />
                 <Route path={ScreenPath.congrats} element={<CongratsScreen />} />
+                <Route path={ScreenPath.privacyPolicy} element={<PrivacyPolicyScreen />} />
               </Routes>
             </WikiGameProvider>
           </Router>

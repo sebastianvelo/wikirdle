@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'letterSpacing': 'letterSpacing',
+      },
       colors: {
         primary: defaultColors.indigo,
         secondary: defaultColors.slate,

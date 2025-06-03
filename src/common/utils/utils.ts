@@ -3,6 +3,7 @@ export const ScreenPath = {
   congrats: "/congrats",
   wiki: (startArticle: string, destination: string, lang: string) => `/wiki/${lang}/${encodeURIComponent(startArticle)}/to/${encodeURIComponent(destination)}`,
   wikiPattern: "/wiki/:lang/:startArticle/to/:destination",
+  privacyPolicy: "/privacy-policy"
 } as const;
 
 export const RouteParams = {
