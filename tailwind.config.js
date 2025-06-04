@@ -13,7 +13,7 @@ module.exports = {
         'letterSpacing': 'letterSpacing',
       },
       colors: {
-        primary: defaultColors.indigo,
+        primary: defaultColors.blue,
         secondary: defaultColors.slate,
         accent: defaultColors.blue
       },

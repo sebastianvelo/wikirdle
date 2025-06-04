@@ -1,7 +1,8 @@
+import { ScreenPath } from "@common/utils/utils";
+import I18n from "@context/language/common/I18nKeys";
 import useI18N from "@hooks/app/useI18N";
 import contacts from "./common/contacts";
 import FooterIcon from "./common/FooterIcon";
-import I18n from "@context/language/common/I18nKeys";
 
 const Footer: React.FC = () => {
     const { t } = useI18N();
@@ -18,7 +19,7 @@ const Footer: React.FC = () => {
                         </p>
                         <span className="hidden sm:inline text-primary-400 text-xs">•</span>
                         <p className="text-xs">
-                            <a className="text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300 transition-all duration-200 hover:underline" href="/privacy-policy">
+                            <a className="text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-200 transition-all duration-200 hover:underline" href={ScreenPath.privacyPolicy}>
                                 {t(I18n.FOOTER.PRIVACY_POLICY)}
                             </a>
                         </p>
