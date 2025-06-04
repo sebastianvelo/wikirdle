@@ -4,6 +4,10 @@
 
 **Wikirdle** is a web game where players navigate from one Wikipedia article to another using only internal links, aiming to reach the target page in the fewest number of clicks.
 
+## 🌐 Live Site
+
+👉 [wikirdle.web.app](https://wikirdle.web.app)
+
 ## 🚀 How to Play
 
 1. **Start**: Choose a starting Wikipedia article and a target one.
@@ -12,12 +16,15 @@
 
 ## 🧱 Technologies Used
 
-- **React** 19.1.0
-- **TypeScript** 5.8.3
-- **Tailwind CSS** 4.1.8
-- **React Router** 7.6.1
-- **Webpack** 5.99.9
+- **React** 18.2.0
+- **TypeScript** 4.9.5
+- **Tailwind CSS** 3.4.17
+- **React Router DOM** 7.1.1
+- **Webpack** 5.99.7
 - **Firebase Hosting**
+- **Axios** for HTTP requests
+- **Lucide React** for icons
+- **PostCSS + Autoprefixer** for CSS processing
 
 ## Development Setup
 
@@ -94,10 +101,6 @@ This reads from `src/styles.css` and outputs to `src/output.css`.
 ## 🔒 Privacy
 
 Wikirdle does **not** collect or transmit personal data. It uses `localStorage` to save user preferences like language and theme. See the [Privacy Policy](https://wikirdle.web.app/privacy-policy) for details.
-
-## 🌐 Live Site
-
-👉 [wikirdle.web.app](https://wikirdle.web.app)
 
 ## 📬 Contact
 
