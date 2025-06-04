@@ -2,49 +2,105 @@
 
 # Wikirdle
 
-Wikirdle is a fun and challenging game where the goal is to navigate from one Wikipedia article to another in as few clicks as possible. Built with **React**, **TypeScript**, and styled with **Tailwind CSS**, it offers a modern and responsive experience.
+**Wikirdle** is a web game where players navigate from one Wikipedia article to another using only internal links, aiming to reach the target page in the fewest number of clicks.
 
-## Demo
+## 🚀 How to Play
 
-Check out the game here:  [https://wikirdle.web.app](https://wikirdle.web.app)
+1. **Start**: Choose a starting Wikipedia article and a target one.
+2. **Navigate**: Click on internal links within the articles to progress toward your goal.
+3. **Finish**: The game tracks the number of clicks, time taken, and the full path taken.
 
-- 🖱 **Minimal click challenge:** Navigate through Wikipedia articles with as few clicks as possible.
-- ⚛️ **Modern Tech Stack:** Developed using React, TypeScript, and Tailwind CSS.
-- 📱 **Responsive Design:** Enjoy a smooth experience on both desktop and mobile devices.
+## 🧱 Technologies Used
 
-## Getting Started
+- **React** 19.1.0
+- **TypeScript** 5.8.3
+- **Tailwind CSS** 4.1.8
+- **React Router** 7.6.1
+- **Webpack** 5.99.9
+- **Firebase Hosting**
 
-Follow these steps to set up the project locally.
+## Development Setup
 
-### Prerequisites
+This guide will help you set up and run the **Wikirdle** project locally.
 
-- Node.js (v14 or higher)
-- npm or yarn
+### 🛠️ Requirements
 
-### Installation
+- Node.js (v18 or later recommended)
+- npm
 
-1. **Clone the repository:**
+### 📦 Installation
 
-   ```bash
-   git clone https://github.com/sebastianvelo/wikirdle.git
-   ```
+1. **Clone the repository**
 
-2. **Navigate into the project directory:**
+```bash
+git clone https://github.com/sebastianvelo/wikirdle.git
+cd wikirdle
+```
 
-   ```bash
-   cd wikirdle
-   ```
-   
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+2. **Install dependencies**
 
-   ```bash
-   npm start
-   # or
-   yarn start
-   ```
+```bash
+npm install
+```
 
-Open http://localhost:3000 in your browser to see the app in action!
+### 🚀 Development
+
+To run the development server:
+
+```bash
+npm start
+```
+
+This uses `webpack serve` in development mode.
+
+To watch and build Tailwind CSS automatically:
+
+```bash
+npm run tw:watch
+```
+
+### 🏗️ Build for Production
+
+To build the project and compile Tailwind CSS:
+
+```bash
+npm run build
+```
+
+This will:
+- Compile Tailwind (`tw:build`)
+- Build the app with Webpack in production mode
+
+### 📂 Tailwind CSS Manual Build
+
+If you need to build Tailwind CSS separately:
+
+```bash
+npm run tw:build
+```
+
+This reads from `src/styles.css` and outputs to `src/output.css`.
+
+---
+
+## 📂 Project Structure
+
+- `@common/*`: Shared helpers and utility functions
+- `@context/*`: React context providers for state management
+- `@layout/*`: Layout components like headers and footers
+- `@screens/*`: Main application screens and their logic
+- `@components/*`: Reusable UI components
+
+## 🔒 Privacy
+
+Wikirdle does **not** collect or transmit personal data. It uses `localStorage` to save user preferences like language and theme. See the [Privacy Policy](https://wikirdle.web.app/privacy-policy) for details.
+
+## 🌐 Live Site
+
+👉 [wikirdle.web.app](https://wikirdle.web.app)
+
+## 📬 Contact
+
+If you have any questions or feedback, feel free to reach out:
+
+- **Email**: wikirdle@gmail.com

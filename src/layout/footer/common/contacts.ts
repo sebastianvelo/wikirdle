@@ -7,7 +7,7 @@ const contacts = [
     {
         "id": "github",
         "name": "Github",
-        "url": "https://github.com/sebastianvelo"
+        "url": "https://github.com/sebastianvelo/wikirdle"
     },
     {
         "id": "portfolio",
