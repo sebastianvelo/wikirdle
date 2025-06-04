@@ -57,7 +57,7 @@ const Select: React.FC<SelectProps> = ({ label = "", name, value = "", options, 
                 aria-labelledby={name}
             >
                 <span>{selectedLabel}</span>
-                <Icons.Chevron direction={isOpen ? ChevronDirection.UP : ChevronDirection.DOWN} />
+                <Icons.Chevron direction={isOpen ? ChevronDirection.DOWN : ChevronDirection.UP} />
             </div>
 
             <ul
