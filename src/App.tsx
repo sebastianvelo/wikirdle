@@ -1,6 +1,4 @@
 import { ScreenPath } from "@common/utils/utils";
-import LanguageProvider from "@context/language/LanguageProvider";
-import ToastProvider from "@context/toast/ToastProvider";
 import WikiGameProvider from "@context/wiki-game/WikiGameProvider";
 import Footer from "@layout/footer/Footer";
 import CongratsScreen from "@screens/congrats/CongratsScreen";
@@ -12,8 +10,6 @@ import "./output.css";
 
 const App: React.FC = () => {
   return (
-    <LanguageProvider>
-      <ToastProvider>
         <div className="h-screen overflow-hidden lg:h-auto lg:min-h-screen bg-gradient-to-bl from-primary-200 via-white to-primary-100 dark:from-primary-950 dark:via-black dark:to-primary-950 flex flex-col">
           <Router>
             <WikiGameProvider>
@@ -27,8 +23,6 @@ const App: React.FC = () => {
           </Router>
           <Footer />
         </div>
-      </ToastProvider>
-    </LanguageProvider>
   );
 };
 
