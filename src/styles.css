@@ -89,3 +89,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+body:not(.content) {
+    background-color: transparent;
+    margin: 0px;
+}

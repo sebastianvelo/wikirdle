@@ -37,8 +37,19 @@ const WikiGameProvider: React.FC<WikiGameProviderProps> = ({ children }) => {
         throw new Error(`No se pudo cargar el artículo: ${articleTitle}`);
       }
 
-      const processedContent = htmlContent.replace("<base ", "<base-dis ");
-      dispatch(wikiGameActions.setContent(stripTags(processedContent), normalizeArticleName(articleTitle)));
+      const cleanedHtml = htmlContent
+        // quita los <link> con CSS remoto
+        .replace(/<link[^>]+meta\.wikimedia[^>]*>/g, "")
+        // quita bloques <style> internos (si querés mantenerlos, omití esta línea)
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/g, "")
+        // evita que base rompa tus rutas
+        .replace("<base ", "<base-dis ")
+        // asegura margen 0
+        .replace(/<body[^>]*>/, '<body style="margin:0;">');
+
+      dispatch(
+        wikiGameActions.setContent(stripTags(cleanedHtml), normalizeArticleName(articleTitle))
+      );
     } catch (error) {
       console.error("Error fetching article:", error);
       dispatch(wikiGameActions.setError(`Error al cargar el artículo: ${articleTitle}`));
